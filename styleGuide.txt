@@ -1,0 +1,37 @@
+/*
+====================================
+=========SCSS STYLE GUIDE===========
+====================================
+*/
+/*
+=HTML=
+<nav>
+  <ul class="class_name">
+    <li class="list_option">
+    <li class="list_option">
+  </ul>
+</nav>
+== leave a single space when adding a nested element*** ==
+== one tab space indent per nest ==
+== ALWAYS use the element.class_name or element#id_name syntax ==
+== so we know which element we are grabbing ==
+== SCSS for HTML above ==
+nav {
+  something: some_value;
+  === empty line ===
+    ul.class_name {
+      something: some_value;
+      something_else: some_other_value;
+      === empty line ===
+        li.list_option {
+          something: some_value;
+          something_else: some_other_value;
+        }
+    }
+}
+
+
+====================================
+====================================
+====================================
+*/
