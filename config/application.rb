@@ -33,6 +33,6 @@ module SuChef
     config.active_record.raise_in_transactional_callbacks = true
     # Dotenv::Railtie.load
 
-    HOSTNAME = ENV['HOSTNAME']
+    # HOSTNAME = ENV['HOSTNAME']
   end
 end
