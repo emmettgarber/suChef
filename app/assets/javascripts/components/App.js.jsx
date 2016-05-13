@@ -31,7 +31,7 @@ var App = React.createClass({
     // console.log("hey ya'll");
     return(
       <Header/>
-    {this.props.username}
+    // {this.props.username}
     );
   }
 
