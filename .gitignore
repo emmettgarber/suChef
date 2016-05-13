@@ -51,3 +51,4 @@ build/
 .rvmrc
 *.log
 schema.rb
+.env
