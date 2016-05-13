@@ -21,7 +21,7 @@ window.gpAsyncInit = function() {
     immediate: true,
     response_type: 'code',
     cookie_policy: 'single_host_origin',
-    client_id: '243672987697-q2mf3umam51r1spb39b8g7otol4fagea.apps.googleusercontent.com',
+    client_id: '',
     scope: 'email profile'
   }, function(response) {
     return;
@@ -32,7 +32,7 @@ window.gpAsyncInit = function() {
       immediate: false,
       response_type: 'code',
       cookie_policy: 'single_host_origin',
-      client_id: '243672987697-q2mf3umam51r1spb39b8g7otol4fagea.apps.googleusercontent.com',
+      client_id: '',
       scope: 'email profile'
     }, function(response) {
       if (response && !response.error) {
@@ -41,16 +41,24 @@ window.gpAsyncInit = function() {
 data: response,
           success: function(data) {
             // response from server
+
           }
         });
       } else {
         // google authentication failed
+        alert("You suck at life!");
       }
     });
   });
 };
 </script>
 <h1>Script tag is below me!</h1>
+<% if current_user %>
+  <%= link_to "Sign out, ya Jerk", signout_path %>
+<% else %>
+  <%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %>
+<% end %>
+
 <%= yield %>
 
 </body>
