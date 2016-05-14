@@ -14,8 +14,7 @@ var App = React.createClass({
       }
     }.bind(this));
   },
-
-  updateScreen: function(newScreen, newStates={}){
+  updateScreen: function(newScreen, newStates= {}) {
     this.setState({
       screen: newScreen
     });
@@ -27,12 +26,24 @@ var App = React.createClass({
     // var screens = ""
 
   },
+  // getScreenContent: function() {
+  //   switch(this.state.screen) {
+  //     case "nav":
+  //       return (
+  //         <Nav />
+  //       )
+  //     }
+  //   }
+  // },
+  // getNav: function() {
+    // return (<Nav screen={this.state.screen} loggedIn={this.state.loggedIn} onUpdate={this.updateScreen} />);
+  // },
+
   render: function() {
-    // console.log("hey ya'll");
-    return(
-      <Header/>
-    {this.props.username}
-    );
+    console.log("hey ya'll");
+    return (
+      <Header />
+    )
   }
 
 });
