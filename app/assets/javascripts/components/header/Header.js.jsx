@@ -4,7 +4,7 @@ var Header = React.createClass({
     return(
       <header>
         <Logo />
-        <Nav />
+      <Nav name={this.props.userName}/>
       </header>
     );
   }
