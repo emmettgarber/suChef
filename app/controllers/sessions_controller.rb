@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
 
   #helper methods to manage sessions with react
   def info
-    session_id = logged_in? ? session[:user_id] : false
+    session_id = current_user.id
     render json: {session_id: session_id}
   end
 
