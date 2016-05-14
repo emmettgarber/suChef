@@ -14,7 +14,7 @@ var App = React.createClass({
       }
     }.bind(this));
   },
-  updateScreen: function(newScreen, newStates= {}) {
+  updateScreen: function(newScreen, newStates) {
     this.setState({
       screen: newScreen
     });
@@ -41,9 +41,9 @@ var App = React.createClass({
 
   render: function() {
     console.log("hey ya'll");
-    return (
-      <Header />
-    )
+    return <Header />;
+
+
   }
 
 });
