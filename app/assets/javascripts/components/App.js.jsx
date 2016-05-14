@@ -22,7 +22,7 @@ var App = React.createClass({
       return <Header />;
     }
     else {
-      return <div>Splash Screen!</div>;
+      return <Splash />;
     }
   }
 
