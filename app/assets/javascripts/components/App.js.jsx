@@ -19,10 +19,10 @@ var App = React.createClass({
 
   render: function() {
     if (this.state.loggedIn) {
-      return <div>We're logged in!</div>;
+      return <Header />;
     }
     else {
-      return <div>We're not logged in!</div>;
+      return <div>Splash Screen!</div>;
     }
   }
 
