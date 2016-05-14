@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
   get 'signout', to: 'sessions#destroy', as: 'signout'
+  get 'sessions/info', to: 'sessions#info'
 
   resources :sessions, only: [:create, :destroy]
   resources :home, only: [:show]
@@ -61,5 +62,3 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 end
-
-
