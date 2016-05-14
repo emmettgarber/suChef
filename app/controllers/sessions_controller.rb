@@ -14,8 +14,8 @@ class SessionsController < ApplicationController
 
   #helper methods to manage sessions with react
   def info
-    session_id = current_user.id
-    render json: {session_id: session_id}
+    # session_id = current_user.id
+    render json: current_user
   end
 
   def log_in(user)

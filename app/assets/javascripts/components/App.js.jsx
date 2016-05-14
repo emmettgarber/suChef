@@ -1,16 +1,17 @@
 var App = React.createClass({
   getInitialState: function() {
     return {
-      userId: undefined,
+      user: undefined,
+      userName: undefined,
       loggedIn: false
     };
   },
   componentWillMount: function() {
     //update backend to have sessions/info route
     $.get('/sessions/info', function(resp) {
-      console.log(resp.session_id);
-      if (resp.session_id) {
-        this.setState({loggedIn: true, userId: resp.session_id});
+      console.log(resp);
+      if (resp) {
+        this.setState({loggedIn: true, user: resp.id, userName: resp.email});
       } else {
         this.setState({loggedIn: false});
       }
@@ -19,7 +20,7 @@ var App = React.createClass({
 
   render: function() {
     if (this.state.loggedIn) {
-      return <Header />;
+      return (<Header userName={this.state.userName} />);
     }
     else {
       return <div>Splash Screen!</div>;
