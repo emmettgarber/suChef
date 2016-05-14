@@ -1,8 +1,5 @@
 var Nav = React.createClass({
 
-  handleHomeClick: function() {
-    
-  },
   handleLogoutClick: function() {
 
   },
@@ -11,7 +8,7 @@ var Nav = React.createClass({
     return (
       <nav>
         <li>Welcome, {this.props.name}</li>
-        <li>Logout</li>
+        <li><a href="/signout">Sign Out</a></li>
       </nav>
     );
   }
