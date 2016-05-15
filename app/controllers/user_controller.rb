@@ -2,6 +2,11 @@ class UserController < ApplicationController
   def login
   end
 
+  def profile
+  	if request.xhr?
+  		userdata = User.find(session[:user_id]).to_json
+  	end
+  end
 
   private
   def user_params
