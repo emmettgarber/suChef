@@ -64,7 +64,7 @@ var App = React.createClass({
         </div>
       );
     }
-    else {  
+    else {
       return (<Splash/>);
     }
   }

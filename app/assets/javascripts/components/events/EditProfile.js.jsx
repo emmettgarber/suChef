@@ -1,18 +1,19 @@
 var EditProfile = React.createClass({
   getInitialState: function() {
     return {
-      checked: this.props.checked || false
+      checked: this.props.checked || false,
+      profile: {}
     };
   },
   componentWillMount: function() {
     event.preventDefault();
-
-    $.ajax({
-
-    })
+    var route = '/user/profile';
+    $.getJSON(route, function(data){
+      this.setState({profile: data});
+    }.bind(this));
   },
   handleClick: function(e) {
-      this.setState({checked: e.target.checked});
+    this.setState({checked: e.target.checked});
   },
   handleSubmit: function(event) {
     event.preventDefault();
@@ -27,24 +28,16 @@ var EditProfile = React.createClass({
       } else if (resp.result === 'success') {
         this.props.onUpdate('loggedIn', {userId: resp.id})
       }
-    }.bind(this))
+    }.bind(this));
   },
   render: function() {
     var cuisineObject = {french: true, mexican: false, italian: false, lithuanian: true};
+    var profile = this.state.profile.verifiedAwesome;
+    var formattedProfile = {verifiedAwesome}
+    console.log(formattedProfile);
     return (
-      <div style={this.state}>
-        Hello!
-      {/*/ <form>
-      //   <label>
-      //     <input
-      //     type="checkbox"
-      //     checked={this.props.checked}
-      //     onClick={this.handleClick}
-      //     value={this.props.value}
-      //     />
-      //   </label>
-      //   <button type='submit' onSubmit={handleSubmit}>Update Profile</button>
-      // </form>*/}
+      <div>
+        <h3>Verified awesome in the following cuisines</h3>
 
       </div>);
   }

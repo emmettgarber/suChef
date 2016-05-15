@@ -4,8 +4,9 @@ class UserController < ApplicationController
 
   def profile
   	if request.xhr?
-  		userdata = User.find(session[:user_id]).to_json
-  	end
+  		userdata = User.find(session[:user_id])
+      render json: userdata.as_json(methods: :verifiedAwesome )
+    end
   end
 
   private
