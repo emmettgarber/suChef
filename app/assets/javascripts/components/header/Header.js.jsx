@@ -7,7 +7,7 @@ var Header = React.createClass({
     return(
       <header>
         <p className="main-header">Sú Chef</p>
-        <Nav name={this.props.userName}/>
+        <Nav name={this.props.userName} onUpdate={this.props.onUpdate}/>
       </header>
     );
   }

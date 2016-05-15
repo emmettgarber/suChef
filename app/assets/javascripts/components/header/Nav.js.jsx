@@ -1,9 +1,11 @@
 var Nav = React.createClass({
   getInitialState: function() {
     return {
-      backgroundColor: "blue",
-      height: 100,
-      width: 100,
+      style: {
+        backgroundColor: "green",
+        height: 100,
+      },
+
       editProfile: false
     };
   },
@@ -17,18 +19,19 @@ var Nav = React.createClass({
     // $("#main-nav").append($(<EditProfile />));
   },
   handleClick: function() {
-    return (<div className="Profile"><EditProfile /></div>);
+    return this.props.onUpdate("editProfile", {userName: this.props.name});
   },
 
   render: function() {
     return (
-      <div className="nav-container">
-        <nav className="main-nav">
-          <p>Welcome, <button onClick={this.handleClick()}>{this.props.name}</button></p>
-          <p><a href="/signout">Sign Out</a></p>
+      <div className="header">
+        <nav id="main-nav" style={this.state.style}>
+          <li>Welcome, <button onClick={this.handleClick}>{this.props.name}</button></li>
+          <li><a href="/signout">Sign Out</a></li>
           {/* <li>{this.editProfile()}</li> */}
         </nav>
-        <div onClick={this.editProfile()}></div>
+        {/*<div onClick={this.editProfile()}></div>*/}
+      {/*<div>{this.editProfile()}</div>*/}
       </div>
     );
   }
