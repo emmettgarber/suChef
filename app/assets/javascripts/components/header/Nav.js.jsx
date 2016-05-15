@@ -22,10 +22,10 @@ var Nav = React.createClass({
 
   render: function() {
     return (
-      <div className="header">
-        <nav id="main-nav">
-          <li>Welcome, <button onClick={this.handleClick()}>{this.props.name}</button></li>
-          <li><a href="/signout">Sign Out</a></li>
+      <div className="nav-container">
+        <nav className="main-nav">
+          <p>Welcome, <button onClick={this.handleClick()}>{this.props.name}</button></p>
+          <p><a href="/signout">Sign Out</a></p>
           {/* <li>{this.editProfile()}</li> */}
         </nav>
         <div onClick={this.editProfile()}></div>

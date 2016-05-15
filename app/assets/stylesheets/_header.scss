@@ -1,0 +1,13 @@
+header {
+  border: red dotted 1px;
+  padding: 0px;
+}
+p.main-header {
+  margin-top: 3px;
+  border: white solid 1px;
+  color: white;
+  font-size: 70px;
+  font-family: 'Amatic SC', cursive;
+}
+
+@import "nav";
