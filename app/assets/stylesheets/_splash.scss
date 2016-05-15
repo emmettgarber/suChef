@@ -14,14 +14,27 @@ div.login-top {
 
         div.login-picture-item {
           display: inline-block;
-          width: 19%;
-          border: 1px white dotted;
+          width: 20%;
           background-color: $MainBackgroundColor;
-          height: 40px;
+          height: 20px;
+
+            svg {
+              margin: 23%;
+              width: 100px;
+            }
         }
     }
 
-    p.small-text {
+}
+
+div.login-lower {
+  width: 400px;
+  margin: auto;
+  margin-top: 30px;
+  text-align: center;
+
+    a {
+      font-family: sans-serif;
       color: $LightBlue;
       font-size: 14px;
     }
