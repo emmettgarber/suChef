@@ -52,7 +52,7 @@ var App = React.createClass({
   );
     }
     else {
-      return <Splash />;
+      return (<Splash/>);
     }
   }
 
