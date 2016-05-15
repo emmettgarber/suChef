@@ -3,7 +3,8 @@ var App = React.createClass({
     return {
       user: undefined,
       userName: undefined,
-      loggedIn: false
+      loggedIn: false,
+      screen: "none"
     };
   },
   componentWillMount: function() {
@@ -17,13 +18,41 @@ var App = React.createClass({
       }
     }.bind(this));
   },
+  updateScreen: function(newScreen, newStates={}) {
+    this.setState({
+      screen: newScreen
+    });
+    var newStatesClone = {}
+    for (newState in newStates) {
+			newStatesClone[newState]= newStates[newState]
+		}
+		this.setState(newStatesClone)
+    var screens = "editUserProfile";
+    $('body').removeClass(screens).addClass(newScreen);
+
+  },
+  getEditProfile: function() {
+    if ("getUserProfile") {
+      return (<EditProfile onUpdate={this.updateScreen} />);
+    }
+  },
 
   render: function() {
     if (this.state.loggedIn) {
-      return (<Header userName={this.state.userName} />);
+      return (
+        <div id="page">
+          <Header userName={this.state.userName} />
+          <div className="displayEditProfile">
+            {this.getEditProfile("getUserProfile")}
+          </div>
+          <MyEventsContainer />
+          <CreateEvent />
+          <CalendarContainer/>
+        </div>
+  );
     }
     else {
-      return <Food />;
+      return <Splash />;
     }
   }
 
