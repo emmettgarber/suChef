@@ -22,12 +22,8 @@ var App = React.createClass({
     if (this.state.loggedIn) {
       return (<Header userName={this.state.userName} />);
     }
-    else {
-<<<<<<< HEAD
-      return <Splash/>;
-=======
+    else {  
       return (<Splash/>);
->>>>>>> 8003e7b6d1b760615684bf5dee1f93c1100292d2
     }
   }
 
