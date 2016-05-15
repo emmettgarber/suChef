@@ -1,0 +1,28 @@
+
+div.login-top {
+  background-color: $MainBackgroundColor;
+
+    h1.login-header {
+      text-align: center;
+      color: white;
+      font-size: 100px;
+      font-family: 'Amatic SC', cursive;
+    }
+
+    div.login-pictures {
+      width: 100%;
+
+        div.login-picture-item {
+          display: inline-block;
+          width: 19%;
+          border: 1px white dotted;
+          background-color: $MainBackgroundColor;
+          height: 40px;
+        }
+    }
+
+    p.small-text {
+      color: $LightBlue;
+      font-size: 14px;
+    }
+}

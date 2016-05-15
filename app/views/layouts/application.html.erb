@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link href='https://fonts.googleapis.com/css?family=Amatic+SC:400,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
 <script>
@@ -52,18 +53,11 @@ data: response,
   });
 };
 </script>
-<h1>Script tag is below me!</h1>
-
 
 <div id="app-container">
   <%= yield %>
 </div>
 
-<% if current_user %>
-  <%= link_to "Sign out, ya Jerk", signout_path %>
-<% else %>
-  <%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %>
-<% end %>
 
 
 </body>
