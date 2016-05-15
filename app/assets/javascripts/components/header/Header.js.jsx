@@ -5,8 +5,8 @@ var Header = React.createClass({
   // helper functions for this view to use
   render: function(){
     return(
-      <header>
-        <p className="main-header">Sú Chef</p>
+      <header className="page-header">
+        <p className="main-header-text">Sú Chef</p>
         <Nav name={this.props.userName} onUpdate={this.props.onUpdate}/>
       </header>
     );

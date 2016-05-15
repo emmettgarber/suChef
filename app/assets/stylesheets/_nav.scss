@@ -1,4 +1,43 @@
-div.nav-container {
+div.header {
+  display: inline-block;
+  width: 1000px;
+
     nav.main-nav {
+
+        div.left-side {
+          width: 500px;
+          display: inline-block;
+        }
+
+        table.name-logout {
+          position: relative;
+          top: 20px;
+          display: inline-block;
+
+            td {
+
+                a {
+                  text-decoration: none;
+                  color: white;
+                }
+            }
+
+            td.invisible {
+              width: 0px;
+              display: none;
+            }
+
+            td.middle {
+              text-align: center;
+            }
+
+            td.key {
+            }
+
+            td.number {
+              text-align: center;
+            }
+
+        }
     }
 }
