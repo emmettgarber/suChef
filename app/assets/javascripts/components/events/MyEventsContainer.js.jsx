@@ -1,9 +1,9 @@
-var EventsContainer = React.createClass({
+var MyEventsContainer = React.createClass({
   getInitialState: function() {
      return {display: true};
   },
   render: function() {
-    
-    return (<EventGrid/>);
+    return (
+      <div><EventGrid/>I am an EventGrid</div>);
   }
 });
