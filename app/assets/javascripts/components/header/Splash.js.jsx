@@ -7,6 +7,7 @@ var Splash = React.createClass({
             <div className="login-top">
               <h1 className="login-header">Sú Chef</h1>
               <div className="login-pictures">
+                <Sushi />
                 <div className="login-picture-item"></div>
                 <div className="login-picture-item"></div>
                 <div className="login-picture-item"></div>
