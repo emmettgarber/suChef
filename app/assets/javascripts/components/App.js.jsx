@@ -23,7 +23,7 @@ var App = React.createClass({
       return (<Header userName={this.state.userName} />);
     }
     else {
-      return <Food />;
+      return (<Splash/>);
     }
   }
 
