@@ -3,6 +3,6 @@ var CreateEvent = React.createClass({
        return {display: true};
   },
   render: function(){
-
+    return (<div>I am a CreateEvent component</div>);
   }
 });

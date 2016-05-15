@@ -4,9 +4,10 @@ var App = React.createClass({
       user: undefined,
       userName: undefined,
       loggedIn: false,
-      screen: "none"
+      screen: "loggedIn"
     };
   },
+
   componentWillMount: function() {
     //update backend to have sessions/info route
     $.get('/sessions/info', function(resp) {
@@ -18,6 +19,30 @@ var App = React.createClass({
       }
     }.bind(this));
   },
+
+  getScreenContent: function() {
+    switch (this.state.screen) {
+      case "splash":
+        return <Splash />
+      case "loggedIn":
+        return (
+        <div>
+          <Header userName={this.state.userName} onUpdate={this.updateScreen}/>
+          <MyEventsContainer onUpdate={this.updateScreen}/>
+          <CreateEvent onUpdate={this.updateScreen}/>
+          <CalendarContainer onUpdate={this.updateScreen}/>
+        </div>
+      );
+      case "editProfile":
+        return (
+          <div>
+            <Header userName={this.state.userName} onUpdate={this.updateScreen}/>
+            <EditProfile onUpdate={this.updateScreen} />
+          </div>
+      );
+    }
+  },
+
   updateScreen: function(newScreen, newStates={}) {
     this.setState({
       screen: newScreen
@@ -31,25 +56,13 @@ var App = React.createClass({
     $('body').removeClass(screens).addClass(newScreen);
 
   },
-  getEditProfile: function() {
-    if ("getUserProfile") {
-      return (<EditProfile onUpdate={this.updateScreen} />);
-    }
-  },
-
   render: function() {
     if (this.state.loggedIn) {
       return (
         <div id="page">
-          <Header userName={this.state.userName} />
-          <div className="displayEditProfile">
-            {this.getEditProfile("getUserProfile")}
-          </div>
-          <MyEventsContainer />
-          <CreateEvent />
-          <CalendarContainer/>
+          {this.getScreenContent()}
         </div>
-  );
+      );
     }
     else {
       return (<Splash/>);
