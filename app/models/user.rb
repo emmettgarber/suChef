@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_many :teachings, class_name: 'Classroom', foreign_key: :instructor_id
   has_many :viewings, class_name: 'Classroom', foreign_key: :apprentice_id
-  has_many :specializations
+  has_many :specializations, foreign_key: :cook_id
   has_many :specialties, through: :specializations
   # def self.from_omniauth(auth)
   #   @user = User.first_or_initialize_by(user_params)
