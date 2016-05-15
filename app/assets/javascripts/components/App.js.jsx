@@ -10,8 +10,8 @@ var App = React.createClass({
 
   componentWillMount: function() {
     //update backend to have sessions/info route
-    $.getJSON('/sessions/info', function(resp) {
-      console.log(resp);
+
+    $.get('/sessions/info', function(resp) {
       if (resp) {
         this.setState({loggedIn: true, user: resp.id, userName: resp.email});
       } else {
