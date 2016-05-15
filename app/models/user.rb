@@ -1,5 +1,9 @@
 class User < ActiveRecord::Base
-  #  def self.from_omniauth(auth)
+  has_many :teachings, class_name: 'Classroom', foreign_key: :instructor_id
+  has_many :viewings, class_name: 'Classroom', foreign_key: :apprentice_id
+  has_many :specializations
+  has_many :specialties, through: :specializations
+  # def self.from_omniauth(auth)
   #   @user = User.first_or_initialize_by(user_params)
   #   @user.provider = auth.provider
   #   @user.uid = auth.uid
@@ -9,12 +13,48 @@ class User < ActiveRecord::Base
   #   @user.save!
   # end
 
+  def instructorScore
+    scores = self.teachings.pluck(:instructor_goodness)
+    average = scores.reduce(:+)/self.teachings.count 
 
+  end
 
+  def apprenticeScore
+    scores = self.viewings.pluck(:apprentice_goodness)
+    average = (scores.reduce(:+))/(self.viewings.count) 
+  end
 
+  def verifiedAwesome
+    categories = self.teachings.pluck(:cuisine)
+    categories.uniq!
+    verified =[]
+    categories.each do |cat|
+      holder = self.teachings.where(cuisine: cat)
+      quantity = holder.count
+      score = holder.pluck(:instructor_goodness).reduce(:+)/quantity
+      if quantity > 4 && score >= 4
+        verified << cat 
+      end
+    end
+    return verified
+  end
 
-
-
+  def missingRatings
+    rooms =[]
+    revs_for_instructors = this.viewings.where(instructor_goodness: nil)
+    revs_for_viewers = this.teachings.where(apprentice_goodness: nil)
+    revs_for_instructors.each do |rev|
+      if rev.done?
+        rooms << rev.id
+      end
+    end
+    revs_for_viewers.each do |rev|
+      if rev.done?
+        rooms << rev.id
+      end
+    end
+    return rooms
+  end
 
   def self.from_omniauth(auth)
     p auth.info
