@@ -25,22 +25,22 @@ var Nav = React.createClass({
             <p>Welcome, <button onClick={this.handleClick}>{this.props.name}</button></p>
             <a href="/signout">Sign Out</a>
           </div>
-          <table className="name-logout">
-            <tr>
-              <td className="middle">
-                <p className="stats-title">My Stats</p>
-              </td>
-            </tr>
-            <tr>
-              <td className="key">Video Count</td>
-              <td className="number">5</td>
-            </tr>
-            <tr>
-              <td></td>
-              <td className="key">Rating</td>
-              <td className="number">5</td>
-            </tr>
-          </table>
+          <div className="name-logout">
+              <div>
+                <div className="middle">
+                  <p className="stats-title">My Stats</p>
+                </div>
+              </div>
+              <div>
+                <div className="key">Video Count</div>
+                <div className="number">5</div>
+              </div>
+              <div>
+                <div></div>
+                <div className="key">Rating</div>
+                <div className="number">5</div>
+              </div>
+          </div>
           {/* <li>{this.editProfile()}</li> */}
         </nav>
         {/*<div onClick={this.editProfile()}></div>*/}
