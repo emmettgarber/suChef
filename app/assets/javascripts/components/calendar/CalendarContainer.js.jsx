@@ -3,6 +3,6 @@ var CalendarContainer = React.createClass({
     return {display: true};
   },
   render: function(){
-    return (<div>I am a CalendarContainer component</div>);
+    return (<div><CalendarDisplay/></div>);
   }
 });

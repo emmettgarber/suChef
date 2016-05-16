@@ -28,7 +28,6 @@ var App = React.createClass({
         <div>
           <Header userName={this.state.userName} onUpdate={this.updateScreen}/>
           <MyEventsContainer onUpdate={this.updateScreen}/>
-          <CreateEvent onUpdate={this.updateScreen}/>
           <CalendarContainer onUpdate={this.updateScreen}/>
         </div>
       );
@@ -63,13 +62,14 @@ var App = React.createClass({
         </div>
       );
     }
-    else {  
+    else {
       return (<Splash/>);
     }
   }
 
 });
 
+// <CreateEvent onUpdate={this.updateScreen}/>
 // updateScreen: function(newScreen, newStates) {
 //   this.setState({
 //     screen: newScreen
