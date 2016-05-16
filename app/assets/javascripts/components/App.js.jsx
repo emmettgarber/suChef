@@ -29,7 +29,7 @@ var App = React.createClass({
         <div>
           <Header userName={this.state.userName} onUpdate={this.updateScreen}/>
           <MyEventsContainer onUpdate={this.updateScreen} profile={this.state.user} />
-          <CreateEvent onUpdate={this.updateScreen}/>
+        {/*<CreateEvent onUpdate={this.updateScreen}/>*/}
           <CalendarContainer onUpdate={this.updateScreen} profile={this.state.user}/>
         </div>
       );
