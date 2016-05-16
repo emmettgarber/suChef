@@ -2,21 +2,43 @@ div.main-cal-container {
 
     h1 {
       text-align: center;
+      font-family: 'Amatic SC', cursive;
+      letter-spacing: 2px;
+      margin-bottom: 0px;
     }
+
+    p.notice{
+      margin-top: 0px;
+      text-align: center;
+      letter-spacing: 2px;
+      font-family: 'Amatic SC', cursive;
+    }
+
+    span#pink {
+      background-color: $StudentPink
+    }
+
+    span#yellow {
+      background-color: $TeacherYellow
+    }
+
     div.events-sub-container {
-      margin-left: 20px;
+      width: 900px;
+      margin: auto;
+
         div {
+          outline: 1px $LightBlue solid;
           display: inline-block;
-          border: 1px blue dotted;
           padding: 15px;
         }
 
         div.student {
-          background-color: red;
+          background-color: $StudentPink
         }
 
         div.teacher {
-          background-color: yellow;
+          background-color: $TeacherYellow
+
         }
     }
 }
