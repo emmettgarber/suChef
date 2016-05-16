@@ -1,4 +1,4 @@
-class ClassroomController < ActionController
+class ClassroomController < ApplicationController
 	# def new
 	# 	newroom = Classroom.new(params[:classroom])
 	# 	if newroom.save
@@ -16,9 +16,13 @@ class ClassroomController < ActionController
 	# 		render json: updateroom.as_json
 	# 	end
 	# end
-	#
-	# def show_open
-	#
-	# end
+
+	def show_open
+		if request.xhr?
+			open_classroom_for_instructors = Classroom.where(apprentice_id: true, instructor_id: nil)
+			open_classroom_for_students = Classroom.where(apprentice_id: nil, instructor_id: true)
+			render json: {students: open_classroom_for_students, teachers: open_classroom_for_instructors}.as_json
+		end
+	end
 
 end
