@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160513152048) do
+ActiveRecord::Schema.define(version: 20160516224127) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20160513152048) do
     t.string   "hangout_url"
     t.string   "language"
     t.datetime "endtime"
-    t.string   "type"
+    t.string   "classroomFormat"
     t.integer  "instructor_goodness"
     t.integer  "apprentice_goodness"
     t.datetime "created_at",          null: false

@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:create, :destroy]
   resources :home, only: [:show]
+  resources :classroom, only: [:create, :update]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
