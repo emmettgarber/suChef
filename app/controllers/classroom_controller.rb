@@ -1,10 +1,16 @@
 class ClassroomController < ApplicationController
 	def create
-		p request.body
-		# newroom = Classroom.new(classroom_params)
-		# if newroom.save
-		# 	render json: newroom.as_json
-		# end
+		newroom = Classroom.new(classroom_params)
+		p params[:classroom][:role]
+		if params[:classroom][:role] == "instructor"
+			newroom.instructor = current_user
+		elsif params[:classroom][:role] == "apprentice"
+			newroom.apprentice = current_user
+		end
+
+		if newroom.save
+			render json: newroom.as_json
+		end
 	end
 
 	def update
@@ -28,6 +34,6 @@ class ClassroomController < ApplicationController
 
 	private
 	def classroom_params
-		params.require(:classroom).permit(:starttime, :endtime, :cuisine, :dish, :type, :language)
+		params.require(:classroom).permit(:starttime, :endtime, :cuisine, :dish, :classroomFormat, :language)
 	end
 end
