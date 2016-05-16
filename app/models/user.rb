@@ -15,13 +15,13 @@ class User < ActiveRecord::Base
 
   def instructorScore
     scores = self.teachings.pluck(:instructor_goodness)
-    average = scores.reduce(:+)/self.teachings.count 
+    average = scores.reduce(:+)/self.teachings.count
 
   end
 
   def apprenticeScore
     scores = self.viewings.pluck(:apprentice_goodness)
-    average = (scores.reduce(:+))/(self.viewings.count) 
+    average = (scores.reduce(:+))/(self.viewings.count)
   end
 
   def verifiedAwesome
@@ -30,10 +30,13 @@ class User < ActiveRecord::Base
     verified =[]
     categories.each do |cat|
       holder = self.teachings.where(cuisine: cat)
+      holder = holder.where.not(instructor_goodness: nil)
       quantity = holder.count
-      score = holder.pluck(:instructor_goodness).reduce(:+)/quantity
+      if quantity > 0
+        score = holder.pluck(:instructor_goodness).reduce(:+)/quantity
+      end
       if quantity > 4 && score >= 4
-        verified << cat 
+        verified << cat
       end
     end
     return verified
