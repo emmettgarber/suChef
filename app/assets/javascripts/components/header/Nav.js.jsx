@@ -1,11 +1,6 @@
 var Nav = React.createClass({
   getInitialState: function() {
     return {
-      style: {
-        backgroundColor: "green",
-        height: 100,
-      },
-
       editProfile: false
     };
   },
@@ -25,9 +20,27 @@ var Nav = React.createClass({
   render: function() {
     return (
       <div className="header">
-        <nav id="main-nav" style={this.state.style}>
-          <li>Welcome, <button onClick={this.handleClick}>{this.props.name}</button></li>
-          <li><a href="/signout">Sign Out</a></li>
+        <nav className="main-nav" style={this.state.style}>
+          <div className="left-side">
+            <p>Welcome, <button onClick={this.handleClick}>{this.props.name}</button></p>
+            <a href="/signout">Sign Out</a>
+          </div>
+          <div className="name-logout">
+              <div>
+                <div className="middle">
+                  <p className="stats-title">My Stats</p>
+                </div>
+              </div>
+              <div>
+                <div className="key">Video Count</div>
+                <div className="number">5</div>
+              </div>
+              <div>
+                <div></div>
+                <div className="key">Rating</div>
+                <div className="number">5</div>
+              </div>
+          </div>
           {/* <li>{this.editProfile()}</li> */}
         </nav>
         {/*<div onClick={this.editProfile()}></div>*/}

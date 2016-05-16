@@ -1,0 +1,51 @@
+div.header {
+  display: inline-block;
+  width: 1000px;
+
+    nav.main-nav {
+      position: relative;
+      top: 15px;
+      margin-left: 100px;
+
+        div.left-side {
+          width: 500px;
+          display: inline-block;
+
+            a {
+              text-decoration: none;
+              color: white;
+            }
+
+            a:hover {
+              color: $LightBlue
+            }
+        }
+
+        div.name-logout {
+          position: relative;
+          top: 20px;
+          display: inline-block;
+
+            div.invisible {
+              width: 0px;
+              display: none;
+            }
+
+            div.middle {
+              text-align: center;
+            }
+
+            div.key {
+              width: 120px;
+              display: inline-block;
+            }
+
+            div.number {
+              width: 40px;
+              margin-left: 10px;
+              text-align: right;
+              display: inline-block;
+            }
+        }
+    }
+}

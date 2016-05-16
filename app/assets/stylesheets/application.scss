@@ -18,11 +18,14 @@
  */
 html {
   background-color: $MainBackgroundColor;
-
+  font-family: 'Source Sans Pro', sans-serif;
+  color: white;
+  
     body {
       width: 100%;
       margin: 0px;
     }
 }
 
-@import "splash"
+@import "splash";
+@import "header";
