@@ -1,0 +1,31 @@
+div.whole-form svg {
+  width: 40px;
+}
+
+h1.form-title {
+  margin: auto;
+  width: 700px;
+  margin-top: 30px;
+  margin-bottom: 0px;
+  text-align: center;
+  letter-spacing: 3px;
+  font-family: 'Amatic SC', cursive;
+}
+
+form.create-form {
+  border-radius: 5px;
+  padding: 10px;
+  background-color: rgb(250, 168, 46);
+
+    label {
+      margin-right: 10px;
+    }
+
+    select {
+      margin-right: 30px;
+    }
+
+    input[type=submit] {
+      margin-left: 30px;
+    }
+}
