@@ -5,7 +5,7 @@ class ClassroomController < ActionController
 	# 		render json: newroom.as_json
 	# 	end
 	# end
-	#
+
 	# def add
 	# 	updateroom = Classroom.find(params[:classroom_id])
 	# 	if updateroom.apprentice_id == nil
@@ -16,9 +16,8 @@ class ClassroomController < ActionController
 	# 		render json: updateroom.as_json
 	# 	end
 	# end
-	#
-	# def show_open
-	#
-	# end
 
+	# def show_open
+
+	# end
 end
