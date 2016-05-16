@@ -2,15 +2,11 @@ var EditProfile = React.createClass({
   getInitialState: function() {
     return {
       checked: this.props.checked || false,
-      profile: ""
+      profile: this.props.profile
     };
   },
   componentWillMount: function() {
-    event.preventDefault();
-    var route = '/user/profile';
-    $.getJSON(route, function(data){
-      this.setState({profile: data});
-    }.bind(this));
+
   },
   handleClick: function(e) {
     this.setState({checked: e.target.checked});
@@ -30,21 +26,20 @@ var EditProfile = React.createClass({
       }
     }.bind(this));
   },
+  getAllProperties: function(items) {
+    return items.map(function(listValue, i) {
+      return <li key={i}>{listValue}</li>
+    })
+  },
 
   render: function() {
-    var cuisineObject = {french: true, mexican: false, italian: false, lithuanian: true};
-    var profile_array = this.state.profile.verifiedAwesome
-    if (this.state.profile) {
-      console.log(this.state.profile.verifiedAwesome[0]);
-    }
+    var profileArray = this.state.profile.verifiedAwesome;
     return (
       <div>
         <h3>Verified awesome in the following cuisines</h3>
         <ul>
-          {this.state.profile.map(function(index, listValue){
-            return <li>{listValue.verifiedAwesome[index]}</li>;
-          })}
-       </ul>
+          {this.getAllProperties(profileArray)}
+        </ul>
       </div>);
   }
 })
