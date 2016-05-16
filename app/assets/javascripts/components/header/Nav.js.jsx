@@ -25,6 +25,14 @@ var Nav = React.createClass({
             <p>Welcome, <button onClick={this.handleClick}>{this.props.name}</button></p>
             <a href="/signout">Sign Out</a>
           </div>
+          <div className="img-collection">
+            <div className="header-img"></div>
+            <div className="header-img"><Steak/></div>
+            <div className="header-img"></div>
+            <div className="header-img"><Knives/></div>
+            <div className="header-img"></div>
+            <div className="header-img"><Corn/></div>
+          </div>
           <div className="name-logout">
               <div>
                 <div className="middle">
@@ -40,6 +48,14 @@ var Nav = React.createClass({
                 <div className="key">Rating</div>
                 <div className="number">5</div>
               </div>
+          </div>
+          <div className="img-collection">
+            <div className="header-img"></div>
+            <div className="header-img"><PizzaSlice/></div>
+            <div className="header-img"></div>
+            <div className="header-img"><Fish/></div>
+            <div className="header-img"></div>
+            <div className="header-img"><Donut/></div>
           </div>
           {/* <li>{this.editProfile()}</li> */}
         </nav>

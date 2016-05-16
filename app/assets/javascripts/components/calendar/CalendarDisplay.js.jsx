@@ -3,6 +3,7 @@ var CalendarDisplay = React.createClass({
     return (
       <div className="main-cal-container">
         <h1>Here are some open events! RSVP to one if you want</h1>
+        <p className="notice"><span id="pink">PINK</span> means this event needs a student, <span id="yellow">YELLOW</span> means it needs a teacher</p>
         <div className="events-sub-container">
         {studentObject.map(function(studentClassroom, i) {
           var time = moment(studentClassroom.starttime).format('dddd [at] h:mm a').toString();
