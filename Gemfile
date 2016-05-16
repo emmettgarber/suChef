@@ -28,6 +28,7 @@ gem "omniauth-google-oauth2", "~> 0.2.1"
 gem 'json'
 gem 'pry-rails'
 gem 'react-rails'
+gem 'momentjs-rails'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
@@ -49,4 +50,3 @@ group :development do
   gem 'spring'
 end
 gem 'rails_12factor', group: :production
-
