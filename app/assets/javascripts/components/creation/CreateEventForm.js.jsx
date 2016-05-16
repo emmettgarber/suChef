@@ -5,7 +5,9 @@ var CreateEventForm = React.createClass({
       startTime: "05:00:00",
       endTime: "06:00:00",
       role: "viewer",
-      dish: ''
+      dish: '',
+      month: moment().format("MM"),
+      day: moment().format("D")
     }
   },
 
@@ -19,13 +21,7 @@ var CreateEventForm = React.createClass({
   handleSubmit: function(event) {
     event.preventDefault();
     var data = this.getFormData();
-    $.ajax({
-      url: '/classroom',
-      method: 'post',
-      data: data
-    }).done(function(resp) {
-      console.log(resp);
-    });
+    console.log(this.formatTime());
   },
 
   getFormData: function() {
@@ -34,7 +30,15 @@ var CreateEventForm = React.createClass({
       data[props] = this.refs[props].value;
     };
     return data;
-    console.log(data);
+  },
+
+  formatTime: function() {
+    var year = moment().format("YYYY");
+    var month = this.state.month;
+    var day = this.state.day;
+    var time = this.state.startTime;
+    var timeZone = moment().format("Z");
+    return year + "-" + month + "-" + day + " " + time + " " + timeZone
   },
 
   render: function() {
@@ -142,21 +146,21 @@ var CreateEventForm = React.createClass({
           <option value="23:00:00">11:00 PM</option>
           <option value="23:30:00">11:30 PM</option>
         </select><br />
-        <select ref="month" name="month" onChange={this.handleChange}>
-          <option value="1">January</option>
-          <option value="2">February</option>
-          <option value="3">March</option>
-          <option value="4">April</option>
-          <option value="5">May</option>
-          <option value="6">June</option>
-          <option value="7">July</option>
-          <option value="8">August</option>
-          <option value="9">September</option>
+        <select ref="month" name="month" value={this.state.month} onChange={this.handleChange}>
+          <option value="01">January</option>
+          <option value="02">February</option>
+          <option value="03">March</option>
+          <option value="04">April</option>
+          <option value="05">May</option>
+          <option value="06">June</option>
+          <option value="07">July</option>
+          <option value="08">August</option>
+          <option value="09">September</option>
           <option value="10">October</option>
           <option value="11">November</option>
           <option value="12">December</option>
       </select>
-      <select ref="day" name="day" onChange={this.handleChange}>
+      <select ref="day" name="day" value={this.state.day} onChange={this.handleChange}>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>

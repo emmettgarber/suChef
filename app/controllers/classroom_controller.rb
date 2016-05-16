@@ -24,6 +24,7 @@ class ClassroomController < ApplicationController
 			open_classroom_for_students = Classroom.where(apprentice_id: nil, instructor_id: true)
 			render json: {students: open_classroom_for_students, teachers: open_classroom_for_instructors}.as_json
 		end
+	end
 
 	private
 	def classroom_params
