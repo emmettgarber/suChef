@@ -24,6 +24,24 @@ class ClassroomController < ApplicationController
 		end
 	end
 
+	def register
+	    p "Ya got me bro. "
+			classId = params[:classId].to_i
+			p classId
+			classroom = Classroom.find(classId)
+			p classroom
+			p "========="
+			p current_user.id
+			if classroom.instructor_id == nil
+				classroom.update(instructor_id: current_user.id)
+			elsif classroom.apprentice_id == nil
+				classroom.update(apprentice_id: current_user.id)
+			else
+				p "Already registered, go away"
+			end
+			render json: "Sup dawg, I'm done adding you to the class"
+	end
+
 	def show_open
 		if request.xhr?
 			open_classroom_for_instructors = Classroom.where(apprentice_id: true, instructor_id: nil)

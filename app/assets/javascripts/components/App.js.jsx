@@ -22,8 +22,6 @@ var App = React.createClass({
 
   getScreenContent: function() {
     switch (this.state.screen) {
-      case "splash":
-        return <Splash />
       case "loggedIn":
         return (
         <div>

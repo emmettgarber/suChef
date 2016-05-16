@@ -1,4 +1,28 @@
 var CalendarDisplay = React.createClass({
+  getInitialState: function() {
+  return {
+      form: true
+    }
+  },
+  submitRSVP: function(classroomId){
+      var submission = {
+          classId: classroomId,
+        }
+        console.log(submission);
+      $.ajax({
+        method: 'POST',
+        url: '/classrooms/register',
+        data: submission,
+        dataType: "json"
+      }).done(function(response){
+
+      }.bind(this));
+      console.log("Hi Rocky");
+      this.setState({
+        form: false
+      })
+
+  },
   getClassrooms: function(studentObject, teacherObject) {
     return (
       <div className="main-cal-container">
@@ -12,17 +36,17 @@ var CalendarDisplay = React.createClass({
               <p>{studentClassroom.dish}</p>
               <p>{studentClassroom.cuisine}</p>
               <p>{time}</p>
-              <p>RSVP</p>
+              <button classId={studentClassroom.id} className="submit-rsvp-button" onClick={this.submitRSVP.bind(this,studentClassroom.id)}>RSVP</button>
             </div>
           )
         }, this)}
         {teacherObject.map(function(teacherClassroom, i) {
           var time = moment(teacherClassroom.starttime).format('dddd [at] h:mm a').toString();
-          return (<div className="teacher" key={"teacher-" + i}>
+          return (<div id="teacher" className="teacher" key={"teacher-" + i}>
             <p>{teacherClassroom.dish}</p>
             <p>{teacherClassroom.cuisine}</p>
             <p>{time}</p>
-            <p>RSVP</p>
+            <button classId={teacherClassroom.id} className="submit-rsvp-button" onClick={this.submitRSVP.bind(this,teacherClassroom.id)}>RSVP</button>
           </div>)
         }, this)}
         </div>
