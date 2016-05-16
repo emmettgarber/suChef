@@ -1,0 +1,22 @@
+div.main-cal-container {
+
+    h1 {
+      text-align: center;
+    }
+    div.events-sub-container {
+      margin-left: 20px;
+        div {
+          display: inline-block;
+          border: 1px blue dotted;
+          padding: 15px;
+        }
+
+        div.student {
+          background-color: red;
+        }
+
+        div.teacher {
+          background-color: yellow;
+        }
+    }
+}

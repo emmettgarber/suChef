@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   get 'signout', to: 'sessions#destroy', as: 'signout'
   get 'sessions/info', to: 'sessions#info'
   get 'user/profile', to: 'user#profile'
+  get 'classrooms', to: 'classroom#show_open'
+  # post 'classroom/new' to: 'classroom#new'
+  # post 'classroom/add' to: 'classroom#add'
 
   resources :sessions, only: [:create, :destroy]
   resources :home, only: [:show]
