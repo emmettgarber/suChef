@@ -29,7 +29,8 @@ class User < ActiveRecord::Base
     categories.uniq!
     verified =[]
     categories.each do |cat|
-      holder = self.teachings.where(cuisine: cat, instructor_goodness: true)
+      holder = self.teachings.where(cuisine: cat)
+      holder = holder.where.not(instructor_goodness: nil)
       quantity = holder.count
       if quantity > 0
         score = holder.pluck(:instructor_goodness).reduce(:+)/quantity

@@ -2,16 +2,17 @@ var CreateEventForm = React.createClass({
   getInitialState: function() {
     return {
       cuisine: "",
-      startTime: "05:00:00",
-      endTime: "06:00:00",
+      starttime: "05:00:00",
+      endtime: "06:00:00",
       role: "viewer",
       dish: '',
-
+      month: moment().format("MM"),
+      day: moment().format("D")
     }
   },
 
   handleChange: function(event) {
-    field = event.target.name
+    var field = event.target.name
     var nextState = {};
     nextState[field] = event.target.value;
     this.setState(nextState);
@@ -19,7 +20,14 @@ var CreateEventForm = React.createClass({
 
   handleSubmit: function(event) {
     event.preventDefault();
-    console.log(this.getFormData());
+    var data = this.getFormData();
+    $.ajax({
+      url: '/classroom',
+      method: 'post',
+      data: {classroom: data}
+    }).done(function(resp) {
+      console.log("Hello");
+    });
   },
 
   getFormData: function() {
@@ -27,11 +35,31 @@ var CreateEventForm = React.createClass({
     for (props in this.refs) {
       data[props] = this.refs[props].value;
     };
+    data["starttime"] = this.formatTime(data.starttime);
+    data["endtime"] = this.formatTime(data.endtime);
     return data;
-    console.log(data);
+  },
+
+  formatTime: function(time) {
+    var year = moment().format("YYYY");
+    var month = this.state.month;
+    var day = this.state.day;
+    var time = time;
+    var timeZone = moment().format("Z");
+    return year + "-" + month + "-" + day + " " + time + " " + timeZone
+  },
+
+  renderTimeSlots: function(time) {
+    var hour = moment().hour(0).startOf('hour').add(time, 'm');
+    return <option value={hour.format("HH:mm:ss")}>{hour.format("hh:mm a")}</option>
   },
 
   render: function() {
+    var rows = [];
+    for (var i = 0; i < 1440; i += 30) {
+      rows.push(this.renderTimeSlots(i));
+    };
+
     return (
       <div className="whole-form">
         <h1 className='form-title'><span className="small-icon"><Fish/></span>...Create Your Event by Filling This Out...<span className="small-icon"><Sushi/></span></h1>
