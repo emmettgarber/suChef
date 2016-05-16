@@ -10,6 +10,7 @@ var App = React.createClass({
 
   componentWillMount: function() {
     //update backend to have sessions/info route
+
     $.get('/sessions/info', function(resp) {
       if (resp) {
         this.setState({loggedIn: true, user: resp.id, userName: resp.email});
@@ -63,7 +64,7 @@ var App = React.createClass({
         </div>
       );
     }
-    else {  
+    else {
       return (<Splash/>);
     }
   }
