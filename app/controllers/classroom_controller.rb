@@ -17,6 +17,15 @@ class ClassroomController < ApplicationController
 	# 	end
 	# end
 
+	def register
+	    p "Ya got me bro. "
+			p params[:classId]
+			classroom = Classroom.find(id: params[:classId])
+			current_user.classrooms << classroom
+
+			render json: "Sup dawg"
+	end
+
 	def show_open
 		if request.xhr?
 			open_classroom_for_instructors = Classroom.where(apprentice_id: true, instructor_id: nil)
