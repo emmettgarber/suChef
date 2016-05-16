@@ -5,7 +5,7 @@ class ClassroomController < ApplicationController
 	# 		render json: newroom.as_json
 	# 	end
 	# end
-	#
+
 	# def add
 	# 	updateroom = Classroom.find(params[:classroom_id])
 	# 	if updateroom.apprentice_id == nil
@@ -24,5 +24,4 @@ class ClassroomController < ApplicationController
 			render json: {students: open_classroom_for_students, teachers: open_classroom_for_instructors}.as_json
 		end
 	end
-
 end
