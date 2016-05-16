@@ -20,4 +20,8 @@ class Classroom < ActiveRecord::Base
 		end
 	end
 
+	def next_open_rooms
+
+	end
+
 end
