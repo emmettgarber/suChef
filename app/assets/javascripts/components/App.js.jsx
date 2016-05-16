@@ -13,7 +13,7 @@ var App = React.createClass({
 
     $.get('/sessions/info', function(resp) {
       if (resp) {
-        this.setState({loggedIn: true, user: resp.id, userName: resp.email});
+        this.setState({loggedIn: true, user: resp, userName: resp.email});
       } else {
         this.setState({loggedIn: false});
       }
@@ -29,7 +29,7 @@ var App = React.createClass({
         <div>
           <Header userName={this.state.userName} onUpdate={this.updateScreen}/>
           <MyEventsContainer onUpdate={this.updateScreen}/>
-          <CreateEvent onUpdate={this.updateScreen}/>
+          <CreateEvent user={this.state.user} onUpdate={this.updateScreen}/>
           <CalendarContainer onUpdate={this.updateScreen}/>
         </div>
       );
