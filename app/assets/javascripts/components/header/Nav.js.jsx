@@ -33,7 +33,7 @@ var Nav = React.createClass({
             <div className="header-img"></div>
             <div className="header-img"><Corn/></div>
           </div>
-          <div className="name-logout">
+          <div className="right-side">
               <div>
                 <div className="middle">
                   <p className="stats-title">My Stats</p>

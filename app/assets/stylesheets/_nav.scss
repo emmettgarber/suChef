@@ -4,8 +4,9 @@ div.header {
 
     nav.main-nav {
       position: relative;
-      top: 15px;
+      top: 10px;
       margin-left: 100px;
+      height: 40px;
 
         div.left-side {
           width: 280px;
@@ -23,7 +24,7 @@ div.header {
 
         div.img-collection {
           position: relative;
-          top: 25px;
+          top: 15px;
           display: inline-block;
           width: 151px;
           margin-right: 30px;
@@ -34,9 +35,9 @@ div.header {
             }
         }
 
-        div.name-logout {
+        div.right-side {
           position: relative;
-          top: 20px;
+          top: 10px;
           display: inline-block;
           margin-right: 70px;
 
