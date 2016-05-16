@@ -19,11 +19,20 @@ class ClassroomController < ApplicationController
 
 	def register
 	    p "Ya got me bro. "
-			p params[:classId]
-			classroom = Classroom.find(id: params[:classId])
-			current_user.classrooms << classroom
-
-			render json: "Sup dawg"
+			classId = params[:classId].to_i
+			p classId
+			classroom = Classroom.find(classId)
+			p classroom
+			p "========="
+			p current_user.id
+			if classroom.instructor_id == nil
+				classroom.update(instructor_id: current_user.id)
+			elsif classroom.apprentice_id == nil
+				classroom.update(apprentice_id: current_user.id)
+			else
+				p "Already registered, go away"
+			end
+			render json: "Sup dawg, I'm done adding you to the class"
 	end
 
 	def show_open

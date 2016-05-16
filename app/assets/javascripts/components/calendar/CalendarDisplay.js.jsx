@@ -1,7 +1,7 @@
 var CalendarDisplay = React.createClass({
   getInitialState: function() {
   return {
-    form: true
+      form: true
     }
   },
   submitRSVP: function(classroomId){
@@ -36,7 +36,7 @@ var CalendarDisplay = React.createClass({
               <p>{studentClassroom.dish}</p>
               <p>{studentClassroom.cuisine}</p>
               <p>{time}</p>
-            <p><button>RSVP NOT DONE</button></p>
+              <button classId={studentClassroom.id} className="submit-rsvp-button" onClick={this.submitRSVP.bind(this,studentClassroom.id)}>RSVP</button>
             </div>
           )
         }, this)}
