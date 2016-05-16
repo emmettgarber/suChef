@@ -20,5 +20,4 @@ class ClassroomController < ActionController
 	# def show_open
 
 	# end
-
 end

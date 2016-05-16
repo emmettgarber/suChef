@@ -11,7 +11,7 @@ var App = React.createClass({
   componentWillMount: function() {
     //update backend to have sessions/info route
 
-    $.get('/sessions/info', function(resp) {
+    $.get('/user/profile', function(resp) {
       if (resp) {
         this.setState({loggedIn: true, user: resp, userName: resp.email});
       } else {
@@ -28,8 +28,8 @@ var App = React.createClass({
         return (
         <div>
           <Header userName={this.state.userName} onUpdate={this.updateScreen}/>
-          <MyEventsContainer onUpdate={this.updateScreen}/>
-          <CreateEvent user={this.state.user} onUpdate={this.updateScreen}/>
+          <MyEventsContainer onUpdate={this.updateScreen} profile={this.state.user} />
+          <CreateEvent onUpdate={this.updateScreen}/>
           <CalendarContainer onUpdate={this.updateScreen}/>
         </div>
       );
@@ -37,7 +37,7 @@ var App = React.createClass({
         return (
           <div>
             <Header userName={this.state.userName} onUpdate={this.updateScreen}/>
-            <EditProfile onUpdate={this.updateScreen} />
+          <EditProfile profile={this.state.user} onUpdate={this.updateScreen} />
           </div>
       );
     }
