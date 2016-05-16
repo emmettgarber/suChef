@@ -4,11 +4,12 @@ div.header {
 
     nav.main-nav {
       position: relative;
-      top: 15px;
+      top: 10px;
       margin-left: 100px;
+      height: 40px;
 
         div.left-side {
-          width: 500px;
+          width: 280px;
           display: inline-block;
 
             a {
@@ -17,14 +18,28 @@ div.header {
             }
 
             a:hover {
-              color: $LightBlue
+              color: $LightBlue;
             }
         }
 
-        div.name-logout {
+        div.img-collection {
           position: relative;
-          top: 20px;
+          top: 15px;
           display: inline-block;
+          width: 151px;
+          margin-right: 30px;
+
+            div.header-img {
+              display: inline-block;
+              width: 50px;
+            }
+        }
+
+        div.right-side {
+          position: relative;
+          top: 10px;
+          display: inline-block;
+          margin-right: 70px;
 
             div.invisible {
               width: 0px;

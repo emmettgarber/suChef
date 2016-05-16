@@ -71,6 +71,7 @@ var App = React.createClass({
 
 });
 
+// <CreateEvent onUpdate={this.updateScreen}/>
 // updateScreen: function(newScreen, newStates) {
 //   this.setState({
 //     screen: newScreen
