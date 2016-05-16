@@ -12,6 +12,6 @@ var CalendarContainer = React.createClass({
 
   },
   render: function(){
-    return (<div>Hey</div>);
+    return (<div><CalendarDisplay/></div>);
   }
 });
