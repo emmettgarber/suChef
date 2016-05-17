@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
   def create
     user = User.from_omniauth(env["omniauth.auth"])
     session[:user_id] = user.id
+    session[:code] = params[:code]
     redirect_to root_path
     # log_in(@user)
     # render json: {result: "success", user_id: @user.id}
