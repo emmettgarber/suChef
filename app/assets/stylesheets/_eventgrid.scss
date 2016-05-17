@@ -1,6 +1,16 @@
+h1.events-title {
+  text-align: center;
+  letter-spacing: 3px;
+  font-family: 'Amatic SC', cursive;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+div.main-event-container {
+  border-radius: 5px;
+  border-bottom: 1px $LightBlue solid;
+}
 div.cal-headers {
   box-sizing: border-box;
-  border-bottom: 2px $LightBlue solid;
 
     div.header {
       box-sizing: border-box;
@@ -12,7 +22,7 @@ div.cal-headers {
 
 div.fillers {
   box-sizing: border-box;
-  border-bottom: 2px $LightBlue solid;
+  border-top: 2px $LightBlue solid;
 
     div.body {
       box-sizing: border-box;

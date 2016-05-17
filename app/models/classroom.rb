@@ -23,5 +23,4 @@ class Classroom < ActiveRecord::Base
 	def next_open_rooms
 
 	end
-
 end
