@@ -6,7 +6,8 @@ var App = React.createClass({
       loggedIn: false,
       screen: "loggedIn",
       openStudentClasses: [],
-      openTeacherClasses: []
+      openTeacherClasses: [],
+      openClasses: []
     };
   },
 

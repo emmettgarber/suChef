@@ -47,6 +47,11 @@ class ClassroomController < ApplicationController
 		if request.xhr?
 			open_classroom_for_instructors = Classroom.where(apprentice_id: true, instructor_id: nil)
 			open_classroom_for_students = Classroom.where(apprentice_id: nil, instructor_id: true)
+			# (teachings + viewings).sort_by(&:starttime).map do |kitchen|
+	    #   kitchen.as_json.merge(user_type: kitchen.instructor_id == session[:user_id] ? "Teacher" : "Student")
+	    # end
+			p session
+
 			render json: {students: open_classroom_for_students, teachers: open_classroom_for_instructors}.as_json
 		end
 	end

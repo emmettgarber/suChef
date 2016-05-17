@@ -4,7 +4,7 @@ class UserController < ApplicationController
 
   def profile
   	if request.xhr?
-      render json: User.find(session[:user_id]).as_json(methods: [:verifiedAwesome, :viewings, :teachings, :apprenticeScore, :instructorScore, :totalAverage])
+      render json: User.find(session[:user_id]).as_json(methods: [:verifiedAwesome, :viewings, :teachings, :apprenticeScore, :instructorScore, :totalAverage, :kitchen_hashes])
     end
   end
 

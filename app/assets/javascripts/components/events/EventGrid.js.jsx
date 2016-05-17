@@ -1,11 +1,11 @@
 var EventGrid = React.createClass({
-  getViewings: function(viewingsArray) {
-    return viewingsArray.map(function(viewing, i) {
-      var time = moment(viewing.starttime).format(this.props.format).toString();
+  getClasses: function(array) {
+    return array.map(function(viewing, i) {
+      var time = moment(viewing.starttime).format("dddd MMMM Do, [at] h:mm a").toString();
       return (
         <div key={i} className="fillers">
         <div className="body">
-          <p>Student</p>
+          <p>{viewing.user_type}</p>
         </div>
           <div className="body">
             <p>{viewing.dish}</p>
@@ -20,31 +20,7 @@ var EventGrid = React.createClass({
         )
       }, this)
   },
-
-  getTeachings: function(teachingsArray) {
-    return teachingsArray.map(function(teaching, i) {
-      var time = moment(teaching.starttime).format(this.props.format).toString();
-      return (
-        <div key={i} className="fillers">
-        <div className="body">
-          <p>Teacher</p>
-        </div>
-          <div className="body">
-            <p>{teaching.dish}</p>
-          </div>
-          <div className="body">
-            <p>{time}</p>
-          </div>
-          <div className="body">
-            <p>{teaching.hangout_url}</p>
-          </div>
-        </div>
-        )
-      }, this)
-  },
   render: function() {
-    var viewings = this.props.profile.viewings;
-    var teachings = this.props.profile.teachings;
 
     return (
       <div className="my-events-grid">
@@ -62,8 +38,7 @@ var EventGrid = React.createClass({
             <p>Hangout link</p>
           </div>
         </div>
-        {this.getViewings(viewings)}
-        {this.getTeachings(teachings)}
+        {this.getClasses(this.props.profile.kitchen_hashes)}
       </div>);
   }
 })
