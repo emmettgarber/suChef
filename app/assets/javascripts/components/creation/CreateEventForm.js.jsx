@@ -34,7 +34,9 @@ var CreateEventForm = React.createClass({
       method: 'post',
       data: {classroom: data}
     }).done(function(resp) {
-    });
+      this.props.onUpdate();
+      this.setState({cuisine: '', dish: ''})
+    }.bind(this));
   },
 
   getFormData: function() {

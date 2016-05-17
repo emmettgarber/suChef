@@ -37,8 +37,8 @@ var App = React.createClass({
           <Header userName={this.state.fullName} onUpdate={this.updateScreen} />
           
           <MyEventsContainer profile={this.state.user} />
-          <CalendarContainer calendarUpdate={this.loadClasses} openStudentClasses={this.state.openStudentClasses} openTeacherClasses={this.state.openTeacherClasses}/>
-          <CreateEvent onUpdate={this.updateScreen}/>
+          <CalendarContainer onUpdate={this.updateScreen} calendarUpdate={this.loadClasses} openStudentClasses={this.state.openStudentClasses} openTeacherClasses={this.state.openTeacherClasses}/>
+          <CreateEvent onUpdate={this.updateScreen} profileUpdate={this.loadProfile}/>
         </div>
       );
       case "editProfile":
@@ -49,6 +49,10 @@ var App = React.createClass({
           </div>
       );
     }
+  },
+
+  alertMe: function() {
+    alert("This Works")
   },
 
   loadClasses: function() {

@@ -8,9 +8,6 @@ class ClassroomController < ApplicationController
 		end
 
 		if newroom.save
-			newevent = GoogleCalendarEvent.new(current_user, session[:code])
-			cal_event = newevent.create_event(newroom)
-			p JSON.parse(cal_event.body)["id"]
 			render json: newroom.as_json
 		end
 	end
@@ -45,13 +42,8 @@ class ClassroomController < ApplicationController
 
 	def show_open
 		if request.xhr?
-			open_classroom_for_instructors = Classroom.where(apprentice_id: true, instructor_id: nil)
-			open_classroom_for_students = Classroom.where(apprentice_id: nil, instructor_id: true)
-			# (teachings + viewings).sort_by(&:starttime).map do |kitchen|
-	    #   kitchen.as_json.merge(user_type: kitchen.instructor_id == session[:user_id] ? "Teacher" : "Student")
-	    # end
-			p session
-
+			open_classroom_for_instructors = Classroom.where(apprentice_id: true, instructor_id: nil).where.not(apprentice_id: current_user.id)
+			open_classroom_for_students = Classroom.where(apprentice_id: nil, instructor_id: true).where.not(instructor_id: current_user.id)
 			render json: {students: open_classroom_for_students, teachers: open_classroom_for_instructors}.as_json
 		end
 	end
