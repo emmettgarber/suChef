@@ -21,6 +21,12 @@ var App = React.createClass({
       }
     }.bind(this));
     this.loadClasses();
+    // const script = document.createElement("script");
+
+    //     script.src = "https://apis.google.com/js/platform.js";
+    //     script.async = false;
+
+    //     document.body.appendChild(script);
   },
 
   getScreenContent: function() {
@@ -29,6 +35,7 @@ var App = React.createClass({
         return (
         <div>
           <Header userName={this.state.fullName} onUpdate={this.updateScreen} />
+          
           <MyEventsContainer profile={this.state.user} />
           <CalendarContainer calendarUpdate={this.loadClasses} openStudentClasses={this.state.openStudentClasses} openTeacherClasses={this.state.openTeacherClasses}/>
           <CreateEvent onUpdate={this.updateScreen}/>
