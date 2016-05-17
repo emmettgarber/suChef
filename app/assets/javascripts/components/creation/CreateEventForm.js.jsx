@@ -110,7 +110,7 @@ var CreateEventForm = React.createClass({
               <option value="Mandarin">Mandarin</option>
               <option value="Spanish">Spanish</option>
               <option value="Tagalog">Tagalog</option>
-          </select>
+          </select><br/>
           <label for="cuisine">Cuisine: </label>
           <input type="text" name="cuisine" ref="cuisine" value={this.state.cuisine} onChange={this.handleChange} /><br />
           <label for="role">Who Are You? </label>
