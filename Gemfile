@@ -29,6 +29,8 @@ gem 'json'
 gem 'pry-rails'
 gem 'react-rails'
 gem 'momentjs-rails'
+gem 'google-api-client', '<0.9'
+gem 'signet'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
