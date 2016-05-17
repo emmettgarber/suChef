@@ -13,13 +13,6 @@ div.edit-profile {
       width: 40px;
     }
 
-    div.title {
-
-        p {
-          font-family: $HeaderFont;
-          letter-spacing: 2px;
-        }
-    }
 
     div.table {
       width: 525px;
@@ -30,22 +23,34 @@ div.edit-profile {
           display: inline-block;
           text-align: right;
           margin-right: 40px;
+
+            div.title {
+
+                p {
+                  font-family: $HeaderFont;
+                  letter-spacing: 2px;
+                }
+            }
         }
 
         div.right-side {
           display: inline-block;
 
-          div.body {
+            div.body {
 
-            div.small-donut {
-              position: relative;
-              top: 5px;
+                div.small-icon {
+                  position: relative;
+                  display: inline-block;
+                  margin-right: 4px;
+                  top: 7px;
 
-              svg {
-                height: 30px;
-              }
+                    svg {
+                      position: relative;
+                      right: 3px;
+                      height: 40px;
+                    }
+                }
             }
-          }
         }
     }
 }
