@@ -12,16 +12,44 @@ class User < ActiveRecord::Base
   #   @user.oauth_expires_at = Time.at(auth.credentials.expires_at)
   #   @user.save!
   # end
+  def totalAverage
+    count = self.teachings.where.not("instructor_goodness" => nil).count
+    count1 = self.viewings.where.not("apprentice_goodness" => nil).count
+    scores = self.teachings.where.not("instructor_goodness" => nil).pluck(:instructor_goodness)
+    scores1 = self.viewings.where.not("instructor_goodness" => nil).pluck(:apprentice_goodness)
+    if scores.count > 0 || scores1.count > 0
+      finalscore = (scores.reduce(:+) + scores1.reduce(:+))/(count + count1)
+    else
+      finalscore = 0
+    end
+  end
 
   def instructorScore
-    scores = self.teachings.pluck(:instructor_goodness)
-    average = scores.reduce(:+)/self.teachings.count
-
+    if self.teachings.count > 0
+      scores = self.teachings.pluck(:instructor_goodness)
+      scores.select! {|rating| rating != nil }
+      if scores.length > 0
+        average = scores.reduce(:+)/scores.count
+      else
+        average = 0
+      end
+    else
+      average = 0
+    end
   end
 
   def apprenticeScore
-    scores = self.viewings.pluck(:apprentice_goodness)
-    average = (scores.reduce(:+))/(self.viewings.count)
+    if self.viewings.count > 0
+      scores = self.viewings.pluck(:apprentice_goodness)
+      scores.select! {|rating| rating != nil }
+      if scores.length > 0
+        average = scores.reduce(:+)/scores.count
+      else
+        average = 0
+      end
+    else
+      average = 0
+    end
   end
 
   def verifiedAwesome

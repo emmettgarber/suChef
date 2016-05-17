@@ -11,6 +11,11 @@ header.page-header {
       font-family: $HeaderFont;
       height: 40px;
       margin-right: 20px;
+
+        a {
+          text-decoration: none;
+          color: white;
+        }
     }
 }
 

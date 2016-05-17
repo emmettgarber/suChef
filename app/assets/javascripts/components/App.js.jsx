@@ -13,7 +13,7 @@ var App = React.createClass({
 
     $.get('/user/profile', function(resp) {
       if (resp) {
-        this.setState({loggedIn: true, user: resp, userName: resp.email});
+        this.setState({loggedIn: true, user: resp, userName: resp.email, fullName: resp.full_name});
       } else {
         this.setState({loggedIn: false});
       }
@@ -25,10 +25,10 @@ var App = React.createClass({
       case "loggedIn":
         return (
         <div>
-          <Header userName={this.state.userName} onUpdate={this.updateScreen}/>
+          <Header userName={this.state.fullName} onUpdate={this.updateScreen}/>
           <MyEventsContainer onUpdate={this.updateScreen} profile={this.state.user} />
-        {/*<CreateEvent onUpdate={this.updateScreen}/>*/}
           <CalendarContainer onUpdate={this.updateScreen} profile={this.state.user}/>
+          <CreateEvent onUpdate={this.updateScreen}/>
         </div>
       );
       case "editProfile":

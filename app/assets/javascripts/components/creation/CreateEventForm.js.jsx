@@ -13,12 +13,10 @@ var CreateEventForm = React.createClass({
   },
 
   handleMonthChange: function(event) {
-    console.log(parseInt(event.target.value));
     var nextState = {};
     nextState["month"] = event.target.value;
     nextState["numOfDays"] = moment().month(parseInt(event.target.value) - 1).daysInMonth();
     this.setState(nextState);
-    console.log(this.state);
   },
 
   handleChange: function(event) {
@@ -36,7 +34,6 @@ var CreateEventForm = React.createClass({
       method: 'post',
       data: {classroom: data}
     }).done(function(resp) {
-      console.log("Hello");
     });
   },
 

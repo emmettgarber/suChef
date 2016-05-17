@@ -5,12 +5,11 @@ var EditProfile = React.createClass({
       profile: this.props.profile
     };
   },
-  componentWillMount: function() {
 
-  },
   handleClick: function(e) {
     this.setState({checked: e.target.checked});
   },
+
   handleSubmit: function(event) {
     event.preventDefault();
     var target = $(event.target);
@@ -32,31 +31,29 @@ var EditProfile = React.createClass({
     })
   },
 
+  produceDonuts: function(items) {
+    for (var i = 0; i < items; i++) {
+      return <div className="small-donut"><Donut/></div>
+    }
+  },
+
   render: function() {
     var profileArray = this.state.profile.verifiedAwesome;
     return (
-      <div>
-        <h1 className="profile-header">Welcome to your profile</h1>
-          <div className="right-side">
-              <div>
-                <div className="middle">
-                  <p className="stats-title">My Stats</p>
-                </div>
-              </div>
-              <div>
-                <div className="key"># of Chats</div>
-                <div className="number">5</div>
-              </div>
-              <div>
-                <div></div>
-                <div className="key">Rating</div>
-                <div className="number">5</div>
-              </div>
+      <div className="edit-profile">
+        <h1 className='profile-header'><span className="small-icon"><Donut/></span> Welcome to your profile <span className="small-icon"><Bacon/></span></h1>
+        <div className="table">
+          <div className="left-side">
+            <div className= "title"><p>Overall Rating: </p></div>
+            <div className= "title"><p>Times Taught a Kitchen: </p></div>
+            <div className= "title"><p>Times as a Student: </p></div>
           </div>
-        <h3>Verified awesome in the following cuisines</h3>
-        <ul>
-          {this.getAllProperties(profileArray)}
-        </ul>
+          <div className="right-side">
+            <div className= "body"><p>{this.props.profile.totalAverage}</p></div>
+            <div className= "body">{this.produceDonuts(this.props.profile.teachings.length)}</div>
+            <div className= "body"><p>{this.props.profile.viewings.length}</p></div>
+          </div>
+          </div>
       </div>);
   }
 })

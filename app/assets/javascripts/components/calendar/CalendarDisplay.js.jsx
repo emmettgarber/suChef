@@ -8,7 +8,6 @@ var CalendarDisplay = React.createClass({
       var submission = {
           classId: classroomId,
         }
-        console.log(submission);
       $.ajax({
         method: 'POST',
         url: '/classrooms/register',
@@ -17,7 +16,6 @@ var CalendarDisplay = React.createClass({
       }).done(function(response){
 
       }.bind(this));
-      console.log("Hi Rocky");
       this.setState({
         form: false
       })
@@ -55,7 +53,6 @@ var CalendarDisplay = React.createClass({
   },
 
   render: function() {
-    console.log(this.props);
     studentObj = this.props.openStudentClasses;
     teacherObj = this.props.openTeacherClasses;
     return(
