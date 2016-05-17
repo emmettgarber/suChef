@@ -12,7 +12,6 @@ var CalendarDisplay = React.createClass({
         success: function(response) {
 
           this.props.calendarUpdate();
-          console.log("Hi Rocky, I added you to the class successfully");
         }.bind(this),
         error: function(xhr, status, err) {
         }.bind(this)
