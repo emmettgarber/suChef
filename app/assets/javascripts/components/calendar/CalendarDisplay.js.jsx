@@ -1,9 +1,4 @@
 var CalendarDisplay = React.createClass({
-  getInitialState: function() {
-  return {
-      form: true
-    }
-  },
   submitRSVP: function(classroomId){
       var submission = {
           classId: classroomId,
@@ -12,14 +7,16 @@ var CalendarDisplay = React.createClass({
         method: 'POST',
         url: '/classrooms/register',
         data: submission,
-        dataType: "json"
-      }).done(function(response){
+        dataType: "json",
+        cache: false,
+        success: function(response) {
 
-      }.bind(this));
-      this.setState({
-        form: false
-      })
-
+          this.props.calendarUpdate();
+          console.log("Hi Rocky, I added you to the class successfully");
+        }.bind(this),
+        error: function(xhr, status, err) {
+        }.bind(this)
+      });
   },
   getClassrooms: function(studentObject, teacherObject) {
     return (
@@ -53,11 +50,9 @@ var CalendarDisplay = React.createClass({
   },
 
   render: function() {
-    studentObj = this.props.openStudentClasses;
-    teacherObj = this.props.openTeacherClasses;
     return(
       <div className="class-card">
-        {this.getClassrooms(studentObj, teacherObj)}
+        {this.getClassrooms(this.props.openStudentClasses, this.props.openTeacherClasses)}
       </div>
     )
   }

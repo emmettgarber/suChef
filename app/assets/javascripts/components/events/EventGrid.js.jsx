@@ -1,9 +1,4 @@
 var EventGrid = React.createClass({
-  getInitialState: function () {
-    return {
-      profile: this.props.profile
-    }
-  },
   getDefaultProps: function() {
     return {
       format: 'dddd [at] h:mm a'
@@ -53,8 +48,8 @@ var EventGrid = React.createClass({
       }, this)
   },
   render: function() {
-    var viewings = this.state.profile.viewings
-    var teachings = this.state.profile.teachings
+    var viewings = this.props.profile.viewings
+    var teachings = this.props.profile.teachings
 
     return (
       <div className="my-events-grid">
