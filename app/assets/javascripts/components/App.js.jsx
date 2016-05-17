@@ -32,7 +32,7 @@ var App = React.createClass({
       case "loggedIn":
         return (
         <div>
-          <Header userName={this.state.userName} onUpdate={this.updateScreen} />
+          <Header userName={this.state.fullName} onUpdate={this.updateScreen} />
           <MyEventsContainer onUpdate={this.updateScreen} profile={this.state.user} />
           <CalendarContainer onUpdate={this.updateScreen} calendarUpdate={this.loadEvents} profile={this.state.user} openStudentClasses={this.state.openStudentClasses} openTeacherClasses={this.state.openTeacherClasses}/>
           <CreateEvent onUpdate={this.updateScreen}/>
