@@ -1,6 +1,7 @@
 div.edit-profile {
 
     h1.profile-header {
+      margin-top: 50px;
       text-align: center;
       letter-spacing: 2px;
       font-family: $HeaderFont;
@@ -15,11 +16,10 @@ div.edit-profile {
 
 
     div.table {
-      width: 525px;
-      margin: auto;
+      margin-left: 25%;
 
         div.left-side {
-          width: 300px;
+          width: 200px;
           display: inline-block;
           text-align: right;
           margin-right: 40px;
@@ -27,6 +27,7 @@ div.edit-profile {
             div.title {
 
                 p {
+                  font-size: 24px;
                   font-family: $HeaderFont;
                   letter-spacing: 2px;
                 }
