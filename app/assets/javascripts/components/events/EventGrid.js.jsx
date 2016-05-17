@@ -14,7 +14,7 @@ var EventGrid = React.createClass({
             <p>{time}</p>
           </div>
           <div className="body">
-            <p>{viewing.hangout_url}</p>
+            <div className="g-hangout" data-render="createhangout"></div>
           </div>
         </div>
         )

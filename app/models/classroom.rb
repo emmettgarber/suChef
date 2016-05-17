@@ -20,6 +20,13 @@ class Classroom < ActiveRecord::Base
 		end
 	end
 
+	def emails
+		holder = []
+		holder << self.instructor.email
+		holder << self.apprentice.email
+		return holder
+	end
+
 	def next_open_rooms
 
 	end
