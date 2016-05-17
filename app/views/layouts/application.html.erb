@@ -7,6 +7,7 @@
   <%= csrf_meta_tags %>
   <link href='https://fonts.googleapis.com/css?family=Amatic+SC:400,700' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+  <%= favicon_link_tag 'favicon.ico' %>
 </head>
 <body>
 <script>
@@ -38,17 +39,13 @@ window.gpAsyncInit = function() {
       scope: 'email profile'
     }, function(response) {
       if (response && !response.error) {
-        // google authentication succeed, now post data to server.
         jQuery.ajax({type: 'POST', url: "/auth/google_oauth2/callback",
 data: response,
           success: function(data) {
-            // response from server
-
           }
         });
       } else {
-        // google authentication failed
-        alert("You suck at life!");
+        alert("We're sorry, Google couldn't authenticate you. Please checkout your Google account to see what may have happened.");
       }
     });
   });
@@ -58,8 +55,5 @@ data: response,
 <div id="app-container">
   <%= yield %>
 </div>
-
-
-
 </body>
 </html>
