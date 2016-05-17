@@ -10,7 +10,9 @@ var MyEventsContainer = React.createClass({
       <div>
         <h1 className="events-title">Here are your upcoming events</h1>
         <div className="main-event-container" style={this.state.style} >
-          <EventGrid profile={this.props.profile} onEventUpdate={this.props.onEventUpdate}/>
+          <EventGrid
+            profile={this.props.profile}
+          />
         </div>
       </div>
     );
