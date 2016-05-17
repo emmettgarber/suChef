@@ -1,9 +1,4 @@
 var EventGrid = React.createClass({
-  getDefaultProps: function() {
-    return {
-      format: 'dddd [at] h:mm a'
-    }
-  },
   getViewings: function(viewingsArray) {
     return viewingsArray.map(function(viewing, i) {
       var time = moment(viewing.starttime).format(this.props.format).toString();
@@ -48,8 +43,8 @@ var EventGrid = React.createClass({
       }, this)
   },
   render: function() {
-    var viewings = this.props.profile.viewings
-    var teachings = this.props.profile.teachings
+    var viewings = this.props.profile.viewings;
+    var teachings = this.props.profile.teachings;
 
     return (
       <div className="my-events-grid">

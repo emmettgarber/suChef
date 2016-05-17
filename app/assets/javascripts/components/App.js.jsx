@@ -19,12 +19,7 @@ var App = React.createClass({
         this.setState({loggedIn: false});
       }
     }.bind(this));
-    this.loadEvents();
-  },
-
-  onCalendarUpdate: function(){
-    { /* this.setState({openStudentClasses: openStudentClasses, openTeacherClasses: openTeacherClasses}) */ }
-    this.loadEvents();
+    this.loadClasses();
   },
 
   getScreenContent: function() {
@@ -33,8 +28,8 @@ var App = React.createClass({
         return (
         <div>
           <Header userName={this.state.fullName} onUpdate={this.updateScreen} />
-          <MyEventsContainer onUpdate={this.updateScreen} profile={this.state.user} />
-          <CalendarContainer onUpdate={this.updateScreen} calendarUpdate={this.loadEvents} profile={this.state.user} openStudentClasses={this.state.openStudentClasses} openTeacherClasses={this.state.openTeacherClasses}/>
+          <MyEventsContainer profile={this.state.user} />
+          <CalendarContainer calendarUpdate={this.loadClasses} openStudentClasses={this.state.openStudentClasses} openTeacherClasses={this.state.openTeacherClasses}/>
           <CreateEvent onUpdate={this.updateScreen}/>
         </div>
       );
@@ -48,9 +43,18 @@ var App = React.createClass({
     }
   },
 
-  loadEvents: function() {
+  loadClasses: function() {
     $.get('/classrooms', function(resp){
       this.setState({openStudentClasses: resp.students, openTeacherClasses: resp.teachers});
+    }.bind(this));
+    this.loadProfile();
+  },
+
+  loadProfile: function() {
+    $.get('/user/profile', function(resp) {
+      if (resp) {
+        this.setState({user: resp});
+      }
     }.bind(this));
   },
 
@@ -80,29 +84,3 @@ var App = React.createClass({
   }
 
 });
-
-// <CreateEvent onUpdate={this.updateScreen}/>
-// updateScreen: function(newScreen, newStates) {
-//   this.setState({
-//     screen: newScreen
-//   });
-//   var newStatesClone = {};
-//   for (var state in newStates) {
-//     newStatesClone[state] = newStates[state];
-//   }
-//   this.setState(newStatesClone);
-//   // var screens = ""
-//
-// },
-// getScreenContent: function() {
-//   switch(this.state.screen) {
-//     case "nav":
-//       return (
-//         <Nav />
-//       )
-//     }
-//   }
-// },
-// getNav: function() {
-// return (<Nav screen={this.state.screen} loggedIn={this.state.loggedIn} onUpdate={this.updateScreen} />);
-// },
