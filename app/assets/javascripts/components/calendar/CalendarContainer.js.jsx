@@ -9,7 +9,11 @@ var CalendarContainer = React.createClass({
     console.log(this.props);
     return (
       <div>
-        <CalendarDisplay openStudentClasses={this.props.openStudentClasses} openTeacherClasses={this.props.openTeacherClasses} calendarUpdate={this.props.calendarUpdate}/>
+        <CalendarDisplay
+          openStudentClasses={this.props.openStudentClasses}
+          openTeacherClasses={this.props.openTeacherClasses}
+          calendarUpdate={this.props.calendarUpdate}
+        />
       </div>
     );
   }
