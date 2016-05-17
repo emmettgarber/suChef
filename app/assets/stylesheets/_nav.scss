@@ -1,19 +1,27 @@
-div.header {
+div.nav-header {
   display: inline-block;
+  width: 80%;
 
 
     nav.main-nav {
-
-      position: relative;
-      top: 10px;
       height: 40px;
+      width: 100%;
 
         div.left-side {
-          width: 240px;
+          position: relative;
           display: inline-block;
-          border-radius: 5px;
-          padding: 10px;
-          margin-right: 20px;
+          width: 100%;
+
+            p.username{
+              display: inline-block;
+              margin-top: 0px;
+              margin-bottom: 0px;
+            }
+
+            a.signout {
+              position: absolute;
+              right: 0px;
+            }
 
             a {
               text-decoration: none;

@@ -36,6 +36,23 @@ var EditProfile = React.createClass({
     var profileArray = this.state.profile.verifiedAwesome;
     return (
       <div>
+        <h1 className="profile-header">Welcome to your profile</h1>
+          <div className="right-side">
+              <div>
+                <div className="middle">
+                  <p className="stats-title">My Stats</p>
+                </div>
+              </div>
+              <div>
+                <div className="key"># of Chats</div>
+                <div className="number">5</div>
+              </div>
+              <div>
+                <div></div>
+                <div className="key">Rating</div>
+                <div className="number">5</div>
+              </div>
+          </div>
         <h3>Verified awesome in the following cuisines</h3>
         <ul>
           {this.getAllProperties(profileArray)}
