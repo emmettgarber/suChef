@@ -6,7 +6,6 @@ var CalendarContainer = React.createClass({
     };
   },
   render: function(){
-    console.log(this.props);
     return (
       <div>
         <CalendarDisplay
