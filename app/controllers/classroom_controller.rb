@@ -10,7 +10,7 @@ class ClassroomController < ApplicationController
 		if newroom.save
 			newevent = GoogleCalendarEvent.new(current_user, session[:code])
 			cal_event = newevent.create_event(newroom)
-			p cal_event.body
+			p JSON.parse(cal_event.body)["id"]
 			render json: newroom.as_json
 		end
 	end
