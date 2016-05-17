@@ -40,7 +40,7 @@ var Nav = React.createClass({
                 </div>
               </div>
               <div>
-                <div className="key">Video Count</div>
+                <div className="key"># of Chats</div>
                 <div className="number">5</div>
               </div>
               <div>
