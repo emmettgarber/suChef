@@ -14,7 +14,7 @@ var App = React.createClass({
     //update backend to have sessions/info route
     $.get('/user/profile', function(resp) {
       if (resp) {
-        this.setState({loggedIn: true, user: resp, userName: resp.email});
+        this.setState({loggedIn: true, user: resp, userName: resp.email, fullName: resp.full_name});
       } else {
         this.setState({loggedIn: false});
       }
@@ -34,8 +34,8 @@ var App = React.createClass({
         <div>
           <Header userName={this.state.userName} onUpdate={this.updateScreen} />
           <MyEventsContainer onUpdate={this.updateScreen} profile={this.state.user} />
-          {/*<CreateEvent onUpdate={this.updateScreen}/>*/}
           <CalendarContainer onUpdate={this.updateScreen} calendarUpdate={this.loadEvents} profile={this.state.user} openStudentClasses={this.state.openStudentClasses} openTeacherClasses={this.state.openTeacherClasses}/>
+          <CreateEvent onUpdate={this.updateScreen}/>
         </div>
       );
       case "editProfile":

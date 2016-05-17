@@ -1,19 +1,32 @@
-div.header {
+div.nav-header {
   display: inline-block;
+  width: 80%;
 
 
     nav.main-nav {
-
-      position: relative;
-      top: 10px;
       height: 40px;
+      width: 100%;
 
         div.left-side {
-          width: 240px;
+          position: relative;
           display: inline-block;
-          border-radius: 5px;
-          padding: 10px;
-          margin-right: 20px;
+          width: 100%;
+
+            p.username{
+              display: inline-block;
+              margin-top: 0px;
+              margin-bottom: 0px;
+              font-family: $HeaderFont;
+              letter-spacing: 3px;
+            }
+
+            a.signout {
+              font-family: $HeaderFont;
+              letter-spacing: 3px;
+              position: absolute;
+              right: 0px;
+              font-weight: bold;
+            }
 
             a {
               text-decoration: none;
@@ -35,40 +48,6 @@ div.header {
             div.header-img {
               display: inline-block;
               width: 50px;
-            }
-        }
-
-        div.right-side {
-          position: relative;
-          border-radius: 5px;
-          padding: 10px;
-          top: 10px;
-          display: inline-block;
-          margin-right: 20px;
-
-            div.invisible {
-              width: 0px;
-              display: none;
-            }
-
-            div.middle {
-              text-align: center;
-
-                p.stats-title {
-                  margin-top: 0px;
-                }
-            }
-
-            div.key {
-              width: 120px;
-              display: inline-block;
-            }
-
-            div.number {
-              width: 40px;
-              margin-left: 10px;
-              text-align: right;
-              display: inline-block;
             }
         }
     }

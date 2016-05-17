@@ -3,7 +3,7 @@ div.login-screen {
 }
 
 div.login-top {
-  
+
 
     h1.login-header {
       text-align: center;
@@ -17,11 +17,13 @@ div.login-top {
       margin-top: 0px;
       width: 100%;
 
+
         div.login-picture-item {
           display: inline-block;
           width: 20%;
           background-color: $MainBackgroundColor;
-          height: 20px;
+          height: 0px;
+
 
             svg {
               margin: 23%;

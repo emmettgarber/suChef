@@ -3,10 +3,6 @@ var CalendarDisplay = React.createClass({
       var submission = {
           classId: classroomId,
         }
-      console.log(this);
-      console.log("This is the submission data ...");
-      console.log(submission);
-
       $.ajax({
         method: 'POST',
         url: '/classrooms/register',
@@ -14,14 +10,11 @@ var CalendarDisplay = React.createClass({
         dataType: "json",
         cache: false,
         success: function(response) {
-          console.log("This is props.calendarUpdate ...");
-          console.log(this.props.calendarUpdate);
 
           this.props.calendarUpdate();
           console.log("Hi Rocky, I added you to the class successfully");
         }.bind(this),
         error: function(xhr, status, err) {
-          console.log(status, err.toString());
         }.bind(this)
       });
   },
