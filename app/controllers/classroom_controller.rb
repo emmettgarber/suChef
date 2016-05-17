@@ -1,7 +1,6 @@
 class ClassroomController < ApplicationController
 	def create
 		newroom = Classroom.new(classroom_params)
-		p params[:classroom][:role]
 		if params[:classroom][:role] == "instructor"
 			newroom.instructor = current_user
 		elsif params[:classroom][:role] == "apprentice"
@@ -9,6 +8,9 @@ class ClassroomController < ApplicationController
 		end
 
 		if newroom.save
+			newevent = GoogleCalendarEvent.new(current_user, session[:code])
+			cal_event = newevent.create_event(newroom)
+			p cal_event.body
 			render json: newroom.as_json
 		end
 	end
