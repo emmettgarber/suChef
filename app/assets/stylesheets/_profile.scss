@@ -1,0 +1,56 @@
+div.edit-profile {
+
+    h1.profile-header {
+      text-align: center;
+      letter-spacing: 2px;
+      font-family: $HeaderFont;
+      position: relative;
+    }
+
+    h1.profile-header svg {
+      position: relative;
+      top: 7px;
+      width: 40px;
+    }
+
+
+    div.table {
+      width: 525px;
+      margin: auto;
+
+        div.left-side {
+          width: 300px;
+          display: inline-block;
+          text-align: right;
+          margin-right: 40px;
+
+            div.title {
+
+                p {
+                  font-family: $HeaderFont;
+                  letter-spacing: 2px;
+                }
+            }
+        }
+
+        div.right-side {
+          display: inline-block;
+
+            div.body {
+
+                div.small-icon {
+                  position: relative;
+                  display: inline-block;
+                  margin-right: 4px;
+                  top: 7px;
+
+                    svg {
+                      position: relative;
+                      right: 3px;
+                      height: 40px;
+                    }
+                }
+            }
+        }
+    }
+}

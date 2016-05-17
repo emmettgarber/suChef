@@ -1,27 +1,22 @@
 var CalendarDisplay = React.createClass({
-  getInitialState: function() {
-  return {
-      form: true
-    }
-  },
   submitRSVP: function(classroomId){
       var submission = {
           classId: classroomId,
         }
-        console.log(submission);
       $.ajax({
         method: 'POST',
         url: '/classrooms/register',
         data: submission,
-        dataType: "json"
-      }).done(function(response){
+        dataType: "json",
+        cache: false,
+        success: function(response) {
 
-      }.bind(this));
-      console.log("Hi Rocky");
-      this.setState({
-        form: false
-      })
-
+          this.props.calendarUpdate();
+          console.log("Hi Rocky, I added you to the class successfully");
+        }.bind(this),
+        error: function(xhr, status, err) {
+        }.bind(this)
+      });
   },
   getClassrooms: function(studentObject, teacherObject) {
     return (
@@ -32,7 +27,7 @@ var CalendarDisplay = React.createClass({
         {studentObject.map(function(studentClassroom, i) {
           var time = moment(studentClassroom.starttime).format('dddd [at] h:mm a').toString();
           return (
-            <div className="student" key={"student-" + i}>
+            <div className="student open-event" key={"student-" + i}>
               <p>{studentClassroom.dish}</p>
               <p>{studentClassroom.cuisine}</p>
               <p>{time}</p>
@@ -42,7 +37,7 @@ var CalendarDisplay = React.createClass({
         }, this)}
         {teacherObject.map(function(teacherClassroom, i) {
           var time = moment(teacherClassroom.starttime).format('dddd [at] h:mm a').toString();
-          return (<div id="teacher" className="teacher" key={"teacher-" + i}>
+          return (<div id="teacher" className="teacher open-event" key={"teacher-" + i}>
             <p>{teacherClassroom.dish}</p>
             <p>{teacherClassroom.cuisine}</p>
             <p>{time}</p>
@@ -55,12 +50,9 @@ var CalendarDisplay = React.createClass({
   },
 
   render: function() {
-    console.log(this.props);
-    studentObj = this.props.openStudentClasses;
-    teacherObj = this.props.openTeacherClasses;
     return(
       <div className="class-card">
-        {this.getClassrooms(studentObj, teacherObj)}
+        {this.getClassrooms(this.props.openStudentClasses, this.props.openTeacherClasses)}
       </div>
     )
   }

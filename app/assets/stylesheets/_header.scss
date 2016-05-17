@@ -3,13 +3,19 @@ header.page-header {
   margin: auto;
 
     p.main-header-text {
-      margin-top: 0px;
+      margin-top: 20px;
+      margin-bottom: 0px;
       color: white;
       font-size: 70px;
       display: inline-block;
-      font-family: 'Amatic SC', cursive;
+      font-family: $HeaderFont;
       height: 40px;
       margin-right: 20px;
+
+        a {
+          text-decoration: none;
+          color: white;
+        }
     }
 }
 

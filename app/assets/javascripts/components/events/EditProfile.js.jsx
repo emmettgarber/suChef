@@ -5,12 +5,11 @@ var EditProfile = React.createClass({
       profile: this.props.profile
     };
   },
-  componentWillMount: function() {
 
-  },
   handleClick: function(e) {
     this.setState({checked: e.target.checked});
   },
+
   handleSubmit: function(event) {
     event.preventDefault();
     var target = $(event.target);
@@ -32,14 +31,56 @@ var EditProfile = React.createClass({
     })
   },
 
+  produceDonuts: function() {
+      return (<div className="small-icon"><Donut/></div>)
+  },
+
+  producePizza: function() {
+      return (<div className="small-icon"><PizzaSlice/></div>)
+  },
+
+  produceSteak: function() {
+      return (<div className="small-icon"><Steak/></div>)
+  },
+
   render: function() {
     var profileArray = this.state.profile.verifiedAwesome;
+    var donuts = [];
+    var pizza = [];
+    var steak = [];
+
+    if (this.props.profile.teachings.length > 0) {
+      for (var i = 0; i < this.props.profile.teachings.length; i++) {
+        donuts.push(this.produceDonuts())
+      }
+    }
+
+    if (this.props.profile.totalAverage > 0) {
+      for (var i = 0; i < this.props.profile.totalAverage; i++) {
+        donuts.push(this.produceSteaks())
+      }
+    }
+
+    if (this.props.profile.viewings.length > 0) {
+      for (var i = 0; i < this.props.profile.viewings.length; i++) {
+        pizza.push(this.producePizza())
+      }
+    }
     return (
-      <div>
-        <h3>Verified awesome in the following cuisines</h3>
-        <ul>
-          {this.getAllProperties(profileArray)}
-        </ul>
+      <div className="edit-profile">
+        <h1 className='profile-header'><span className="small-icon"><Donut/></span> Welcome to your profile <span className="small-icon"><Bacon/></span></h1>
+        <div className="table">
+          <div className="left-side">
+            <div className= "title"><p>Overall Rating: </p></div>
+            <div className= "title"><p>Times Taught a Kitchen: </p></div>
+            <div className= "title"><p>Times as a Student: </p></div>
+          </div>
+          <div className="right-side">
+            <div className= "body">{steak}</div>
+            <div className="body">{donuts}</div>
+            <div className= "body">{pizza}</div>
+          </div>
+          </div>
       </div>);
   }
 })
