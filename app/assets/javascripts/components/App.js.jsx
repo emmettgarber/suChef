@@ -4,13 +4,14 @@ var App = React.createClass({
       user: undefined,
       userName: undefined,
       loggedIn: false,
-      screen: "loggedIn"
+      screen: "loggedIn",
+      openStudentClasses: [],
+      openTeacherClasses: []
     };
   },
 
   componentWillMount: function() {
     //update backend to have sessions/info route
-
     $.get('/user/profile', function(resp) {
       if (resp) {
         this.setState({loggedIn: true, user: resp, userName: resp.email});
@@ -18,6 +19,12 @@ var App = React.createClass({
         this.setState({loggedIn: false});
       }
     }.bind(this));
+    this.loadEvents();
+  },
+
+  onCalendarUpdate: function(){
+    { /* this.setState({openStudentClasses: openStudentClasses, openTeacherClasses: openTeacherClasses}) */ }
+    this.loadEvents();
   },
 
   getScreenContent: function() {
@@ -27,10 +34,10 @@ var App = React.createClass({
       case "loggedIn":
         return (
         <div>
-          <Header userName={this.state.userName} onUpdate={this.updateScreen}/>
+          <Header userName={this.state.userName} onUpdate={this.updateScreen} />
           <MyEventsContainer onUpdate={this.updateScreen} profile={this.state.user} />
-        {/*<CreateEvent onUpdate={this.updateScreen}/>*/}
-          <CalendarContainer onUpdate={this.updateScreen} profile={this.state.user}/>
+          {/*<CreateEvent onUpdate={this.updateScreen}/>*/}
+          <CalendarContainer onUpdate={this.updateScreen} calendarUpdate={this.loadEvents} profile={this.state.user} openStudentClasses={this.state.openStudentClasses} openTeacherClasses={this.state.openTeacherClasses}/>
         </div>
       );
       case "editProfile":
@@ -43,6 +50,12 @@ var App = React.createClass({
     }
   },
 
+  loadEvents: function() {
+    $.get('/classrooms', function(resp){
+      this.setState({openStudentClasses: resp.students, openTeacherClasses: resp.teachers});
+    }.bind(this));
+  },
+
   updateScreen: function(newScreen, newStates={}) {
     this.setState({
       screen: newScreen
@@ -53,9 +66,8 @@ var App = React.createClass({
 		}
 		this.setState(newStatesClone)
     var screens = "editUserProfile";
-    $('body').removeClass(screens).addClass(newScreen);
-
   },
+
   render: function() {
     if (this.state.loggedIn) {
       return (
