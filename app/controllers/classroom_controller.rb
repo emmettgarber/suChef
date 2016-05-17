@@ -27,7 +27,6 @@ class ClassroomController < ApplicationController
 	def register
 	    p "Ya got me bro. "
 			classId = params[:classId].to_i
-			p classId
 			classroom = Classroom.find(classId)
 			p classroom
 			p "========="
@@ -39,7 +38,7 @@ class ClassroomController < ApplicationController
 			else
 				p "Already registered, go away"
 			end
-			render json: "Sup dawg, I'm done adding you to the class"
+			render json: { message: "Sup dawg, I'm done adding you to the class" }.as_json
 	end
 
 	def show_open
