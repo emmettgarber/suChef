@@ -36,24 +36,12 @@ var CalendarDisplay = React.createClass({
               )
             }, this)}
           </ReactCSSTransitionGroup>
-          <ReactCSSTransitionGroup transitionName="example" transitionEnterTimeout={500} transitionLeaveTimeout={2000}>
-            {teacherObject.map(function(teacherClassroom, i) {
-              var time = moment(teacherClassroom.starttime).format('dddd [at] h:mm a').toString();
-              return (<div id="teacher" className="teacher open-event" key={"teacher-" + i}>
-                <p>{teacherClassroom.dish}</p>
-                <p>{teacherClassroom.cuisine}</p>
-                <p>{time}</p>
-                <button classId={teacherClassroom.id} className="submit-rsvp-button" onClick={this.submitRSVP.bind(this,teacherClassroom.id)}>RSVP</button>
-              </div>)
-            }, this)}
-          </ReactCSSTransitionGroup>
         </div>
       </div>
     );
   },
 
   render: function() {
-    console.log(this.props.openClasses)
     return(
       <div className="class-card">
         {this.getClassrooms(this.props.openClasses)}
