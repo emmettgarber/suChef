@@ -1,14 +1,19 @@
 var FilterableCuisineTable = React.createClass({
   getInitialState: function() {
     return {
-      filterText: ''
+      filterText: '',
+      cuisinesToShow: []
     }
   },
 
   handleUserInput: function(filterText) {
     this.setState({
+      cuisinesToShow: this.props.cuisines.filter(function(cuisine) {
+        return cuisine.cuisine.indexOf(filterText) >= 0;
+      }, this),
+
       filterText: filterText
-    })
+    });
   },
 
   render: function() {
@@ -19,8 +24,8 @@ var FilterableCuisineTable = React.createClass({
           onUserInput={this.handleUserInput}
         />
         <CuisineTable
-          cuisines={this.props.cuisines}
-          filterText={this.state.filterText}
+          cuisines={this.state.cuisinesToShow}
+          filterText={ this.state.filterText }
         />
       </div>
     );

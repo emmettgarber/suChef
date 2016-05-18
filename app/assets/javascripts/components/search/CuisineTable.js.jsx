@@ -6,9 +6,14 @@ var CuisineTable = React.createClass({
       return cuisine.cuisine.indexOf(this.props.filterText) >= 0;
     }, this);
   },
+
   render: function() {
     if(this.props.filterText.length < 2) return null;
-    return (<table>
+
+    console.log(this.props.cuisines);
+
+    return (
+      <table>
         <thead>
           <tr>
             <th>Name</th>
@@ -16,11 +21,12 @@ var CuisineTable = React.createClass({
         </thead>
         <tbody>
             {
-              this.filteredCuisines().map(function(cuisine) {
+              this.props.cuisines.map(function(cuisine) {
                 return <CuisineCategoryRow cuisine={cuisine.cuisine} key={cuisine.id} />
             })
           }
         </tbody>
-      </table>)
+      </table>
+    )
   }
 });
