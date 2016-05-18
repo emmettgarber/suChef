@@ -36,7 +36,7 @@ var App = React.createClass({
         return (
         <div>
           <Header userName={this.state.fullName} onUpdate={this.updateScreen} />
-          <FilterableCuisineTable cuisines={CUISINES} />
+          <FilterableCuisineTable cuisines={this.state.openStudentClasses} onUpdate={this.updateScreen} calendarUpdate={this.loadClasses} openStudentClasses={this.state.openStudentClasses} openTeacherClasses={this.state.openTeacherClasses} openClasses={this.state.openClasses}/>
           <MyEventsContainer profile={this.state.user} profileUpdate={this.loadProfile}/>
           <CalendarContainer onUpdate={this.updateScreen} calendarUpdate={this.loadClasses} openStudentClasses={this.state.openStudentClasses} openTeacherClasses={this.state.openTeacherClasses} openClasses={this.state.openClasses}/>
           <CreateEvent onUpdate={this.updateScreen} profileUpdate={this.loadProfile}/>
@@ -94,21 +94,3 @@ var App = React.createClass({
 
 });
 
-var CUISINES = [
-  {cuisine: 'Mexican', name: 'Burrito'},
-  {cuisine: 'Lithuanian', name: 'Cepelinai'},
-  {cuisine: 'Greek', name: 'Gyros'},
-  {cuisine: 'Italian',    name: 'Pasta'},
-  {cuisine: 'Korean',    name: 'Kalbi'},
-  {cuisine: 'Vietnamese',    name: 'Spring Rolls'}
-];
-
-
-var PRODUCTS = [
-  {category: 'Sporting Goods', price: '$49.99', stocked: true, name: 'Football'},
-  {category: 'Sporting Goods', price: '$9.99', stocked: true, name: 'Baseball'},
-  {category: 'Sporting Goods', price: '$29.99', stocked: false, name: 'Basketball'},
-  {category: 'Electronics', price: '$99.99', stocked: true, name: 'iPod Touch'},
-  {category: 'Electronics', price: '$399.99', stocked: false, name: 'iPhone 5'},
-  {category: 'Electronics', price: '$199.99', stocked: true, name: 'Nexus 7'}
-];

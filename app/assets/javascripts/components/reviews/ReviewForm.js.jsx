@@ -21,11 +21,10 @@ var ReviewForm = React.createClass({
       data: data
     }).done(function(resp) {
       this.props.updateProfile();
-    }).bind(this);
+    }.bind(this));
   },
 
   getOtherPerson: function() {
-    console.log(this.props.viewing);
     if (this.props.viewing.user_type === "Teacher") {
       return "Student"
     }

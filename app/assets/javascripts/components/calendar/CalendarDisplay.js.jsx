@@ -1,5 +1,6 @@
 var CalendarDisplay = React.createClass({
   submitRSVP: function(classroomId){
+    console.log(classroomId);
       var submission = {
           classId: classroomId,
         }
@@ -17,7 +18,6 @@ var CalendarDisplay = React.createClass({
         }.bind(this)
       });
   },
-
   getClassrooms: function(classrooms) {
     return (
       <div className="main-cal-container">
@@ -25,7 +25,7 @@ var CalendarDisplay = React.createClass({
         <p className="notice"><span id="pink">PINK</span> means this event needs a student, <span id="yellow">YELLOW</span> means it needs a teacher</p>
         <div className="events-sub-container">
           <ReactCSSTransitionGroup transitionName="example" transitionEnterTimeout={500} transitionLeaveTimeout={500}>
-            {classrooms.openClasses.map(function(kitchen, i) {
+            {classrooms.map(function(kitchen, i) {
               var time = moment(kitchen.starttime).format('dddd [at] h:mm a').toString();
               return (
                 <div className={"open-event " + kitchen.user_type} key={"student-" + i}>
@@ -34,9 +34,8 @@ var CalendarDisplay = React.createClass({
                   <p>{time}</p>
                   <button classId={kitchen.id} className="submit-rsvp-button" onClick={this.submitRSVP.bind(this,kitchen.id)}>RSVP</button>
                 </div>
-                )
-              }, this)
-            }
+              )
+            }, this)}
           </ReactCSSTransitionGroup>
         </div>
       </div>
@@ -44,10 +43,10 @@ var CalendarDisplay = React.createClass({
   },
 
   render: function() {
-    var classrooms = this.getClassrooms(this.props);
+    console.log(this.props.openClasses)
     return(
       <div className="class-card">
-        {classrooms}
+        {this.getClassrooms(this.props.openClasses)}
       </div>
     )
   }
