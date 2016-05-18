@@ -1,4 +1,12 @@
 var EventGrid = React.createClass({
+  renderApprBox: function(viewing, emails) {
+    if (moment().isBefore(viewing.starttime)) {
+      return <div className="g-hangout" data-render="createhangout" data-invites={emails}></div>
+    } else {
+      return <ReviewForm profile={this.props.profile} viewing={viewing} updateProfile={this.props.updateProfile}/>
+    }
+  },
+
   getClasses: function(array) {
     return array.map(function(viewing, i) {
       var time = moment(viewing.starttime).format("dddd MMMM Do, [at] h:mm a").toString();
@@ -15,12 +23,13 @@ var EventGrid = React.createClass({
             <p>{time}</p>
           </div>
           <div className="body">
-            <div className="g-hangout" data-render="createhangout" data-invites={emails}></div>
+            {this.renderApprBox(viewing, emails)}
           </div>
         </div>
         )
       }, this)
   },
+
   render: function() {
 
     return (
