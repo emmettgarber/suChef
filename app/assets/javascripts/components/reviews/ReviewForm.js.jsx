@@ -1,7 +1,7 @@
 var ReviewForm = React.createClass({
   getInitialState: function() {
     return {
-      rating: 0
+      rating: -1
     }
   },
 
@@ -21,6 +21,7 @@ var ReviewForm = React.createClass({
       data: data
     }).done(function(resp) {
       this.props.updateProfile();
+      this.setState({ rating: -1 });
     }.bind(this));
   },
 
@@ -37,8 +38,8 @@ var ReviewForm = React.createClass({
     return (
       <div className="review-form">
         <p className="rate-title">Rate Your {this.getOtherPerson()}</p>
-        <select className="rate-selections" onChange={this.handleChange}>
-          <option></option>
+        <select className="rate-selections" onChange={this.handleChange} value={this.state.rating}>
+          <option value="-1"></option>
           <option value="0">Terrible</option>
           <option value="1">Ugh</option>
           <option value="2">Meh</option>
