@@ -1,26 +1,27 @@
 var CuisineTable = React.createClass({
+  filteredCuisines: function() {
+    if(this.props.filterText.length < 2) return [];
+
+    return this.props.cuisines.filter(function(cuisine) {
+      return cuisine.name.indexOf(this.props.filterText) >= 0;
+    }, this);
+  },
   render: function() {
-    var rows = [];
-    var lastCuisine = null;
-    this.props.cuisines.forEach(function(cuisine){
-      if (cuisine.name.indexOf(this.props.filterText) === -1) {
-        return;
-      }
-      if (cuisine.name !== lastCuisine) {
-        rows.push(<CuisineCategoryRow cuisine={cuisine.cuisine} key={cuisine.cuisine} />);
-      }
-      rows.push(<CuisineRow cuisine={cuisine} key={cuisine.id} />);
-      lastCuisine = cuisine.cuisine;
-    }.bind(this));
-    return (
-      <table>
+    if(this.props.filterText.length < 2) return null;
+    
+    return (<table>
         <thead>
           <tr>
             <th>Name</th>
           </tr>
         </thead>
-        <tbody>{rows}</tbody>
-      </table>
-    );
+        <tbody>
+          {
+            this.filteredCuisines().map(function(cuisine) {
+              return <CuisineCategoryRow cuisine={cuisine} key={cuisine.cuisine} />
+            })
+          }
+        </tbody>
+      </table>)
   }
 });
