@@ -3,9 +3,6 @@ var EventGrid = React.createClass({
     return array.map(function(viewing, i) {
       var time = moment(viewing.starttime).format("dddd MMMM Do, [at] h:mm a").toString();
       var holder = viewing
-      // var now = moment();
-      // var when = moment(viewing.starttime);
-      // console.log(moment(now, "DD/MM/YYYY HH:mm:ss").diff(moment(when,"DD/MM/YYYY HH:mm:ss"));
       return (
         <div key={i} className="fillers">
         <div className="body">
