@@ -4,6 +4,15 @@ class Classroom < ActiveRecord::Base
 	has_one :detail
 	validates :cuisine, presence: true
 
+
+	def rating_for(user)
+		if user == instructor
+			instructor_goodness
+		else
+			apprentice_goodness
+		end
+	end
+
 	def soon?
 		if (this.starttime - Time.now)/60 < 20
 			return true

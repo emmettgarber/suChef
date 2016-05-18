@@ -29,8 +29,8 @@ var CalendarDisplay = React.createClass({
               var time = moment(kitchen.starttime).format('dddd [at] h:mm a').toString();
               return (
                 <div className={"open-event " + kitchen.user_type} key={"student-" + i}>
-                  <p>{kitchen.dish}</p>
                   <p>{kitchen.cuisine}</p>
+                  <p>{kitchen.dish}</p>
                   <p>{time}</p>
                   <button classId={kitchen.id} className="submit-rsvp-button" onClick={this.submitRSVP.bind(this,kitchen.id)}>RSVP</button>
                 </div>

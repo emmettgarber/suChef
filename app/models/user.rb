@@ -22,16 +22,16 @@ class User < ActiveRecord::Base
     return complete_viewings
 	end
 
+  def rated_participations
+    self.teachings.where.not("instructor_goodness" => nil) +
+    self.viewings.where.not("apprentice_goodness" => nil)
+  end
+
   def totalAverage
-    count = self.teachings.where.not("instructor_goodness" => nil).count
-    count1 = self.viewings.where.not("apprentice_goodness" => nil).count
-    scores = self.teachings.where.not("instructor_goodness" => nil).pluck(:instructor_goodness)
-    scores1 = self.viewings.where.not("apprentice_goodness" => nil).pluck(:apprentice_goodness)
-    if scores.count > 0 && scores1.count > 0
-      finalscore = (scores.reduce(:+) + scores1.reduce(:+))/(count + count1)
-    else
-      finalscore = 0
-    end
+    total_participations = rated_participations.count
+    scores = rated_participations.map {|classroom| classroom.rating_for(self)}
+    return 0 if total_participations == 0
+    return scores.reduce(:+) / total_participations
   end
 
   def instructorScore
