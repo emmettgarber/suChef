@@ -1,8 +1,8 @@
 var EventGrid = React.createClass({
 
-  renderApprBox: function(viewing, emails) {
-    if (moment().isBefore(viewing.starttime)) {
-      return <div className="g-hangout" data-render="createhangout" data-invites={emails}></div>
+  renderApprBox: function(viewing) {
+    if (moment().isBefore(moment(viewing.starttime).add(30, 'minutes'))) {
+      return <HangoutButton profile={this.props.profile} room={viewing}/>
     } else {
       return <ReviewForm profile={this.props.profile} viewing={viewing} updateProfile={this.props.updateProfile}/>
     }
@@ -21,7 +21,6 @@ var EventGrid = React.createClass({
   getClasses: function(array) {
     return array.map(function(viewing, i) {
       var time = moment(viewing.starttime).format("dddd MMMM Do, [at] h:mm a").toString();
-      var holder = viewing
       return (
         <div key={i} className="fillers">
           <div className="body">
@@ -34,7 +33,7 @@ var EventGrid = React.createClass({
             <p>{time}</p>
           </div>
           <div className="body">
-            {this.renderApprBox(viewing, emails)}
+            {this.renderApprBox(viewing)}
           </div>
         </div>
         )
