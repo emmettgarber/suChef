@@ -7,7 +7,7 @@ var App = React.createClass({
       screen: "loggedIn",
       openStudentClasses: [],
       openTeacherClasses: [],
-      allClasses: []
+      openClasses: []
     };
   },
 
@@ -32,12 +32,13 @@ var App = React.createClass({
   getScreenContent: function() {
     switch (this.state.screen) {
       case "loggedIn":
+
         return (
         <div>
           <Header userName={this.state.fullName} onUpdate={this.updateScreen} />
 
           <MyEventsContainer profile={this.state.user} />
-          <CalendarContainer onUpdate={this.updateScreen} calendarUpdate={this.loadClasses} openStudentClasses={this.state.openStudentClasses} openTeacherClasses={this.state.openTeacherClasses} openClasses={this.state.allClasses}/>
+          <CalendarContainer onUpdate={this.updateScreen} calendarUpdate={this.loadClasses} openStudentClasses={this.state.openStudentClasses} openTeacherClasses={this.state.openTeacherClasses} openClasses={this.state.openClasses}/>
           <CreateEvent onUpdate={this.updateScreen} profileUpdate={this.loadProfile}/>
         </div>
       );
@@ -51,13 +52,9 @@ var App = React.createClass({
     }
   },
 
-  alertMe: function() {
-    alert("This Works")
-  },
-
   loadClasses: function() {
     $.get('/classrooms', function(resp){
-      this.setState({openStudentClasses: resp.students, openTeacherClasses: resp.teachers, allClasses: resp.classrooms});
+      this.setState({openStudentClasses: resp.students, openTeacherClasses: resp.teachers, openClasses: resp.allRooms});
     }.bind(this));
     this.loadProfile();
   },

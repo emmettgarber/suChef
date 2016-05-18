@@ -2,11 +2,9 @@ var CalendarContainer = React.createClass({
   getInitialState: function() {
     return {
       display: true,
-
     };
   },
   render: function(){
-    console.log(this.props.allClasses)
     return (
       <div>
         <CalendarDisplay

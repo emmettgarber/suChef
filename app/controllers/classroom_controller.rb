@@ -48,7 +48,7 @@ class ClassroomController < ApplicationController
 		if request.xhr?
 			open_classroom_for_instructors = Classroom.where(instructor_id: nil).where.not(apprentice_id: current_user.id)
 			open_classroom_for_students = Classroom.where(apprentice_id: nil).where.not(instructor_id: current_user.id)
-			render json: {students: open_classroom_for_students, teachers: open_classroom_for_instructors}.as_json
+			render json: {students: open_classroom_for_students, teachers: open_classroom_for_instructors, allRooms: Classroom.all_rooms(current_user)}.as_json
 		end
 	end
 

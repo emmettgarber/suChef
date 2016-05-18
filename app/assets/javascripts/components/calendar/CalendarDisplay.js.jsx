@@ -17,6 +17,7 @@ var CalendarDisplay = React.createClass({
         }.bind(this)
       });
   },
+
   getClassrooms: function(classrooms) {
     return (
       <div className="main-cal-container">
@@ -24,7 +25,7 @@ var CalendarDisplay = React.createClass({
         <p className="notice"><span id="pink">PINK</span> means this event needs a student, <span id="yellow">YELLOW</span> means it needs a teacher</p>
         <div className="events-sub-container">
           <ReactCSSTransitionGroup transitionName="example" transitionEnterTimeout={500} transitionLeaveTimeout={500}>
-            {classrooms.map(function(kitchen, i) {
+            {classrooms.openClasses.map(function(kitchen, i) {
               var time = moment(kitchen.starttime).format('dddd [at] h:mm a').toString();
               return (
                 <div className={"open-event " + kitchen.user_type} key={"student-" + i}>
@@ -33,19 +34,9 @@ var CalendarDisplay = React.createClass({
                   <p>{time}</p>
                   <button classId={kitchen.id} className="submit-rsvp-button" onClick={this.submitRSVP.bind(this,kitchen.id)}>RSVP</button>
                 </div>
-              )
-            }, this)}
-          </ReactCSSTransitionGroup>
-          <ReactCSSTransitionGroup transitionName="example" transitionEnterTimeout={500} transitionLeaveTimeout={2000}>
-            {teacherObject.map(function(teacherClassroom, i) {
-              var time = moment(teacherClassroom.starttime).format('dddd [at] h:mm a').toString();
-              return (<div id="teacher" className="teacher open-event" key={"teacher-" + i}>
-                <p>{teacherClassroom.dish}</p>
-                <p>{teacherClassroom.cuisine}</p>
-                <p>{time}</p>
-                <button classId={teacherClassroom.id} className="submit-rsvp-button" onClick={this.submitRSVP.bind(this,teacherClassroom.id)}>RSVP</button>
-              </div>)
-            }, this)}
+                )
+              }, this)
+            }
           </ReactCSSTransitionGroup>
         </div>
       </div>
@@ -53,10 +44,10 @@ var CalendarDisplay = React.createClass({
   },
 
   render: function() {
-    console.log(this.props.openClasses)
+    var classrooms = this.getClassrooms(this.props);
     return(
       <div className="class-card">
-        {this.getClassrooms(this.props.openClasses)}
+        {classrooms}
       </div>
     )
   }
