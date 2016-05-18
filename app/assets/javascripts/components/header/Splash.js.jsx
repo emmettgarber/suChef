@@ -14,7 +14,7 @@ var Splash = React.createClass({
               </div>
             </div>
             <div className="login-lower">
-              <a href="/auth/google_oauth2"><GoogleSignInLogo/></a>
+              <a className="login-logo" href="/auth/google_oauth2"><GoogleSignInLogo/></a>
               <a idName="sign_up" href="https://www.google.com" target="_blank"><p>Don't Have a Google Account?</p></a>
             </div>
           </div>)
