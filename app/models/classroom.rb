@@ -31,15 +31,10 @@ class Classroom < ActiveRecord::Base
 
 	end
 
-	def self.all_rooms
-		classrooms = []
-		Classroom.all.each do |room|
-			if room.instructor_id == nil && room.apprentice_id != nil
-				classrooms << room
-			elsif room.instructor_id != nil && room.apprentice_id == nil
-				classrooms << room
-			end
-		end
+	def self.all_rooms(current_user)
+		open_classroom_for_instructors = Classroom.where(instructor_id: nil).where.not(apprentice_id: current_user.id)
+		open_classroom_for_students = Classroom.where(apprentice_id: nil).where.not(instructor_id: current_user.id)
+		classrooms = (open_classroom_for_students + open_classroom_for_instructors)
     classrooms.sort_by(&:starttime).map do |kitchen|
       kitchen.as_json.merge(user_type: kitchen.instructor_id == nil ? "Teacher" : "Student")
     end
