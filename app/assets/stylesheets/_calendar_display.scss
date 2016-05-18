@@ -43,13 +43,22 @@ div.main-cal-container {
           margin-bottom: 5px;
         }
 
-        div.student {
+        div.Student {
           background-color: $StudentPink
         }
 
-        div.teacher {
+        div.Teacher {
           background-color: $TeacherYellow
 
         }
     }
+}
+
+.example-leave {
+  opacity: 1;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+  transition: opacity 500ms ease-in;
 }

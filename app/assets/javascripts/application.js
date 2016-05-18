@@ -17,3 +17,4 @@
 //= require components
 //= require moment
 //= require_tree .
+var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;

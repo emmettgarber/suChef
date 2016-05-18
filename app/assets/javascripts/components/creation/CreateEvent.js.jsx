@@ -1,7 +1,7 @@
 var CreateEvent = React.createClass({
   render: function(){
     return (<div>
-      <CreateEventForm />
+      <CreateEventForm onUpdate={this.props.profileUpdate} />
     </div>);
   }
 });

@@ -12,6 +12,13 @@ class User < ActiveRecord::Base
   #   @user.oauth_expires_at = Time.at(auth.credentials.expires_at)
   #   @user.save!
   # end
+
+  def kitchen_hashes
+    (teachings + viewings).sort_by(&:starttime).map do |kitchen|
+      kitchen.as_json.merge(user_type: kitchen.instructor_id == self.id ? "Teacher" : "Student")
+    end
+	end
+
   def totalAverage
     count = self.teachings.where.not("instructor_goodness" => nil).count
     count1 = self.viewings.where.not("apprentice_goodness" => nil).count

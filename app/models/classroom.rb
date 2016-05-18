@@ -20,9 +20,28 @@ class Classroom < ActiveRecord::Base
 		end
 	end
 
+	def emails
+		holder = []
+		holder << self.instructor.email
+		holder << self.apprentice.email
+		return holder
+	end
+
 	def next_open_rooms
 
 	end
 
-	searchkick text_start: ['cuisine']
+	def self.all_rooms
+		classrooms = []
+		Classroom.all.each do |room|
+			if room.instructor_id == nil && room.apprentice_id != nil
+				classrooms << room
+			elsif room.instructor_id != nil && room.apprentice_id == nil
+				classrooms << room
+			end
+		end
+    classrooms.sort_by(&:starttime).map do |kitchen|
+      kitchen.as_json.merge(user_type: kitchen.instructor_id == nil ? "Teacher" : "Student")
+    end
+	end
 end

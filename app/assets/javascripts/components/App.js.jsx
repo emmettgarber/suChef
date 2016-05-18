@@ -6,7 +6,8 @@ var App = React.createClass({
       loggedIn: false,
       screen: "loggedIn",
       openStudentClasses: [],
-      openTeacherClasses: []
+      openTeacherClasses: [],
+      allClasses: []
     };
   },
 
@@ -20,6 +21,12 @@ var App = React.createClass({
       }
     }.bind(this));
     this.loadClasses();
+    // const script = document.createElement("script");
+
+    //     script.src = "https://apis.google.com/js/platform.js";
+    //     script.async = false;
+
+    //     document.body.appendChild(script);
   },
 
   getScreenContent: function() {
@@ -28,10 +35,9 @@ var App = React.createClass({
         return (
         <div>
           <Header userName={this.state.fullName} onUpdate={this.updateScreen} />
-          <ClassroomsSearch />
           <MyEventsContainer profile={this.state.user} />
-          <CalendarContainer calendarUpdate={this.loadClasses} openStudentClasses={this.state.openStudentClasses} openTeacherClasses={this.state.openTeacherClasses}/>
-          <CreateEvent onUpdate={this.updateScreen}/>
+          <CalendarContainer onUpdate={this.updateScreen} calendarUpdate={this.loadClasses} openStudentClasses={this.state.openStudentClasses} openTeacherClasses={this.state.openTeacherClasses} openClasses={this.state.allClasses}/>
+          <CreateEvent onUpdate={this.updateScreen} profileUpdate={this.loadProfile}/>
         </div>
       );
       case "editProfile":
@@ -44,9 +50,13 @@ var App = React.createClass({
     }
   },
 
+  alertMe: function() {
+    alert("This Works")
+  },
+
   loadClasses: function() {
     $.get('/classrooms', function(resp){
-      this.setState({openStudentClasses: resp.students, openTeacherClasses: resp.teachers});
+      this.setState({openStudentClasses: resp.students, openTeacherClasses: resp.teachers, allClasses: resp.classrooms});
     }.bind(this));
     this.loadProfile();
   },
