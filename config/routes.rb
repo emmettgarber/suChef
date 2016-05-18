@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'user/profile', to: 'user#profile'
   get 'classrooms', to: 'classroom#show_open'
   post 'classrooms/register', to: 'classroom#register'
+  post 'classrooms/rating', to: 'classroom#rating'
   get 'calendars', to: 'calendars#index'
   # post 'classroom/new' to: 'classroom#new'
   # post 'classroom/add' to: 'classroom#add'

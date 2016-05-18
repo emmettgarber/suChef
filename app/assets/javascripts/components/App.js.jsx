@@ -38,6 +38,7 @@ var App = React.createClass({
           <Header userName={this.state.fullName} onUpdate={this.updateScreen} />
           <FilterableCuisineTable cuisines={this.state.openStudentClasses} onUpdate={this.updateScreen} calendarUpdate={this.loadClasses} openStudentClasses={this.state.openStudentClasses} openTeacherClasses={this.state.openTeacherClasses} openClasses={this.state.openClasses}/>
           <MyEventsContainer profile={this.state.user} />
+          <MyEventsContainer profile={this.state.user} profileUpdate={this.loadProfile}/>
           <CalendarContainer onUpdate={this.updateScreen} calendarUpdate={this.loadClasses} openStudentClasses={this.state.openStudentClasses} openTeacherClasses={this.state.openTeacherClasses} openClasses={this.state.openClasses}/>
           <CreateEvent onUpdate={this.updateScreen} profileUpdate={this.loadProfile}/>
         </div>
