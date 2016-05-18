@@ -40,14 +40,14 @@ class ClassroomController < ApplicationController
 			else
 				p "Already registered, go away"
 			end
-			render json: { message: "Sup dawg, I'm done adding you to the class" }.as_json
+			render json: {students: open_classroom_for_students, teachers: open_classroom_for_instructors}.as_json
+		end
 	end
 
-	def show_open
+	def search
+	  classrooms = Classroom.search(params[:query])
 		if request.xhr?
-			open_classroom_for_instructors = Classroom.where(apprentice_id: true, instructor_id: nil)
-			open_classroom_for_students = Classroom.where(apprentice_id: nil, instructor_id: true)
-			render json: {students: open_classroom_for_students, teachers: open_classroom_for_instructors}.as_json
+			render :json => classrooms.to_json
 		end
 	end
 

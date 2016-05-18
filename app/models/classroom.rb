@@ -23,4 +23,6 @@ class Classroom < ActiveRecord::Base
 	def next_open_rooms
 
 	end
+
+	searchkick text_start: ['cuisine']
 end

@@ -28,6 +28,7 @@ var App = React.createClass({
         return (
         <div>
           <Header userName={this.state.fullName} onUpdate={this.updateScreen} />
+          <ClassroomsSearch />
           <MyEventsContainer profile={this.state.user} />
           <CalendarContainer calendarUpdate={this.loadClasses} openStudentClasses={this.state.openStudentClasses} openTeacherClasses={this.state.openTeacherClasses}/>
           <CreateEvent onUpdate={this.updateScreen}/>
