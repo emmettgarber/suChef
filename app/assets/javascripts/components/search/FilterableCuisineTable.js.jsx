@@ -18,7 +18,7 @@ var FilterableCuisineTable = React.createClass({
           filterText={this.state.filterText}
           onUserInput={this.handleUserInput}
         />
-        <CuisineTable cuisines={this.props.cuisines}
+        <CuisineTable
           cuisines={this.props.cuisines}
           filterText={this.state.filterText}
         />
