@@ -1,5 +1,10 @@
-div.whole-form svg {
-  width: 40px;
+div.whole-form {
+  max-width: 1200px;
+  margin: auto;
+
+    svg {
+      width: 40px;
+    }
 }
 
 h1.form-title {
