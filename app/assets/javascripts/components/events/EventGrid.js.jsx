@@ -34,13 +34,7 @@ var EventGrid = React.createClass({
             <p>{time}</p>
           </div>
           <div className="body">
-<<<<<<< HEAD
             {this.renderApprBox(viewing, emails)}
-=======
-            <HangoutButton
-              profile= {this.props.profile} room= {holder}
-            />
->>>>>>> master
           </div>
         </div>
         )
