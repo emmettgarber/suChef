@@ -21,7 +21,7 @@ var ReviewForm = React.createClass({
       data: data
     }).done(function(resp) {
       this.props.updateProfile();
-    })
+    }).bind(this);
   },
 
   getOtherPerson: function() {

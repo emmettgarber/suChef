@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
     count = self.teachings.where.not("instructor_goodness" => nil).count
     count1 = self.viewings.where.not("apprentice_goodness" => nil).count
     scores = self.teachings.where.not("instructor_goodness" => nil).pluck(:instructor_goodness)
-    scores1 = self.viewings.where.not("instructor_goodness" => nil).pluck(:apprentice_goodness)
+    scores1 = self.viewings.where.not("apprentice_goodness" => nil).pluck(:apprentice_goodness)
     if scores.count > 0 && scores1.count > 0
       finalscore = (scores.reduce(:+) + scores1.reduce(:+))/(count + count1)
     else
