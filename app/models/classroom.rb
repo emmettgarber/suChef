@@ -40,7 +40,6 @@ class Classroom < ActiveRecord::Base
 				classrooms << room
 			end
 		end
-		p classrooms
     classrooms.sort_by(&:starttime).map do |kitchen|
       kitchen.as_json.merge(user_type: kitchen.instructor_id == nil ? "Teacher" : "Student")
     end
