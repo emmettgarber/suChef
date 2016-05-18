@@ -8,6 +8,8 @@ h1.events-title {
 div.main-event-container {
   border-radius: 5px;
   border-bottom: 1px $LightBlue solid;
+  margin: auto;
+  max-width: 1200px;
 }
 div.cal-headers {
   box-sizing: border-box;
