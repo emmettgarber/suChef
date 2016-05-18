@@ -30,17 +30,32 @@ div.main-cal-container {
 
     div.events-sub-container {
       box-sizing: border-box;
-      width: 1020px;
+      max-width: 1020px;
       margin: auto;
 
         div {
-          width: 170px;
+          min-width: 170px;
           display: inline-block;
           padding: 15px;
           margin-left: 1px;
           margin-right: 1px;
           border-radius: 8px;
           margin-bottom: 5px;
+
+            p {
+              margin-bottom: 0px;
+              margin-top: 0px;
+            }
+
+            button {
+              background: $OrangeAccent;
+              font-family: $HeaderFont;
+              border: none;
+              margin-top: 10px;
+              border-radius: 10px;
+              letter-spacing: 2px;
+              font-size: 16px;
+            }
         }
 
         div.Student {
