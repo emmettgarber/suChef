@@ -2,7 +2,7 @@ var EventGrid = React.createClass({
   getClasses: function(array) {
     return array.map(function(viewing, i) {
       var time = moment(viewing.starttime).format("dddd MMMM Do, [at] h:mm a").toString();
-      var emails = "[{ id : '"+(viewing.instructor_email)+"', invite_type : 'EMAIL' },{ id : '"+(viewing.apprentice_email)+"', invite_type : 'EMAIL' }]"
+      var holder = viewing
       return (
         <div key={i} className="fillers">
         <div className="body">
@@ -15,7 +15,9 @@ var EventGrid = React.createClass({
             <p>{time}</p>
           </div>
           <div className="body">
-            <div className="g-hangout" data-render="createhangout" data-invites={emails}></div>
+            <HangoutButton 
+              profile= {this.props.profile} room= {holder}
+            />
           </div>
         </div>
         )
