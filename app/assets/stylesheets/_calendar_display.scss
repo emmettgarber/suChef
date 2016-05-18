@@ -51,7 +51,8 @@ div.main-cal-container {
             button {
               background: $OrangeAccent;
               font-family: $HeaderFont;
-              border: none;
+              font-weight: bold;
+              border: 2px $LightBlue solid;
               margin-top: 10px;
               border-radius: 10px;
               letter-spacing: 2px;

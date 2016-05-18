@@ -39,7 +39,7 @@ var EditProfile = React.createClass({
       return (<div className="small-icon"><PizzaSlice/></div>)
   },
 
-  produceSteak: function() {
+  produceSteaks: function() {
       return (<div className="small-icon"><Steak/></div>)
   },
 
@@ -47,7 +47,7 @@ var EditProfile = React.createClass({
     var profileArray = this.state.profile.verifiedAwesome;
     var donuts = [];
     var pizza = [];
-    var steak = [];
+    var steaks = [];
 
     if (this.props.profile.teachings.length > 0) {
       for (var i = 0; i < this.props.profile.teachings.length; i++) {
@@ -57,7 +57,7 @@ var EditProfile = React.createClass({
 
     if (this.props.profile.totalAverage > 0) {
       for (var i = 0; i < this.props.profile.totalAverage; i++) {
-        donuts.push(this.produceSteaks())
+        steaks.push(this.produceSteaks())
       }
     }
 
@@ -76,11 +76,11 @@ var EditProfile = React.createClass({
             <div className= "title"><p>Times as a Student: </p></div>
           </div>
           <div className="right-side">
-            <div className= "body">{steak}</div>
+            <div className="body">{steaks}</div>
             <div className="body">{donuts}</div>
-            <div className= "body">{pizza}</div>
+            <div className="body">{pizza}</div>
           </div>
-          </div>
+        </div>
       </div>);
   }
 })
