@@ -12,7 +12,11 @@ var EventGrid = React.createClass({
   getClasses: function(array) {
     return array.map(function(viewing, i) {
       var time = moment(viewing.starttime).format("dddd MMMM Do, [at] h:mm a").toString();
-      var emails = "[{ id : '"+(viewing.instructor_email)+"', invite_type : 'EMAIL' },{ id : '"+(viewing.apprentice_email)+"', invite_type : 'EMAIL' }]"
+      var emails = "";
+      if (this.props.profile.id  == viewing.instructor_id ) {
+        emails = "[{ id : '"+(viewing.apprentice_email)+"', invite_type : 'EMAIL' }]"
+      } else { emails = "[{ id : '"+(viewing.instructor_email)+"', invite_type : 'EMAIL' }]"
+      }
       return (
         <div key={i} className="fillers">
         <div className="body">
