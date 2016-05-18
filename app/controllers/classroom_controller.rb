@@ -52,6 +52,7 @@ class ClassroomController < ApplicationController
 		end
 	end
 
+
 	private
 	def classroom_params
 		params.require(:classroom).permit(:starttime, :endtime, :cuisine, :dish, :classroomFormat, :language)

@@ -30,6 +30,13 @@ div.fillers {
       display: inline-block;
       width: 25%;
       border-right: 2px $LightBlue solid;
+
+        svg {
+          position: relative;
+          top: 5px;
+          left: 5px;
+          height: 25px;
+        }
     }
 
     div.body:last-child {

@@ -32,6 +32,9 @@ gem 'momentjs-rails'
 gem 'google-api-client', '<0.9'
 gem 'signet'
 
+# Elasticsearch
+gem 'searchkick'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
