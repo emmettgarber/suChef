@@ -41,8 +41,16 @@ div.login-lower {
   text-align: center;
 
     a {
+      position: relative;
       font-family: sans-serif;
       color: $LightBlue;
       font-size: 14px;
+    }
+
+    svg {
+      position: relative;
+      top: 15px;
+      margin: 0px;
+      padding: 0px;
     }
 }
