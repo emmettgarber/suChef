@@ -17,6 +17,7 @@ var FilterableCuisineTable = React.createClass({
   },
 
   render: function() {
+
     return (
       <div>
         <SearchBar
@@ -26,6 +27,10 @@ var FilterableCuisineTable = React.createClass({
         <CuisineTable
           cuisines={this.state.cuisinesToShow}
           filterText={ this.state.filterText }
+        />
+      <CalendarContainer
+          openClasses={this.state.cuisinesToShow}
+          calendarUpdate={this.props.calendarUpdate}
         />
       </div>
     );
