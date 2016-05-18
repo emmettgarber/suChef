@@ -1,7 +1,10 @@
 var EventGrid = React.createClass({
   getClasses: function(array) {
     return array.map(function(viewing, i) {
+      console.log(viewing)
       var time = moment(viewing.starttime).format("dddd MMMM Do, [at] h:mm a").toString();
+      var emails = "[{ id : '"+(viewing.instructor_email)+"', invite_type : 'EMAIL' },{ id : '"+(viewing.apprentice_email)+"', invite_type : 'EMAIL' }]"
+      console.log(emails)
       return (
         <div key={i} className="fillers">
         <div className="body">
@@ -14,7 +17,7 @@ var EventGrid = React.createClass({
             <p>{time}</p>
           </div>
           <div className="body">
-            <div className="g-hangout" data-render="createhangout"></div>
+            <div className="g-hangout" data-render="createhangout" data-invites={emails}></div>
           </div>
         </div>
         )
@@ -38,7 +41,7 @@ var EventGrid = React.createClass({
             <p>Hangout link</p>
           </div>
         </div>
-        <ReactCSSTransitionGroup transitionName="example" transitionEnterTimeout={500} transitionLeaveTimeout={500}>
+        <ReactCSSTransitionGroup transitionName="example" transitionEnterTimeout={500} transitionLeaveTimeout={2000}>
           {this.getClasses(this.props.profile.kitchen_hashes)}
         </ReactCSSTransitionGroup>
       </div>);
