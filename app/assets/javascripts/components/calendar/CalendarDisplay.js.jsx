@@ -23,26 +23,30 @@ var CalendarDisplay = React.createClass({
         <h1>Here are some open events! RSVP to one if you want</h1>
         <p className="notice"><span id="pink">PINK</span> means this event needs a student, <span id="yellow">YELLOW</span> means it needs a teacher</p>
         <div className="events-sub-container">
-        {studentObject.map(function(studentClassroom, i) {
-          var time = moment(studentClassroom.starttime).format('dddd [at] h:mm a').toString();
-          return (
-            <div className="student open-event" key={"student-" + i}>
-              <p>{studentClassroom.dish}</p>
-              <p>{studentClassroom.cuisine}</p>
-              <p>{time}</p>
-              <button classId={studentClassroom.id} className="submit-rsvp-button" onClick={this.submitRSVP.bind(this,studentClassroom.id)}>RSVP</button>
-            </div>
-          )
-        }, this)}
-        {teacherObject.map(function(teacherClassroom, i) {
-          var time = moment(teacherClassroom.starttime).format('dddd [at] h:mm a').toString();
-          return (<div id="teacher" className="teacher open-event" key={"teacher-" + i}>
-            <p>{teacherClassroom.dish}</p>
-            <p>{teacherClassroom.cuisine}</p>
-            <p>{time}</p>
-            <button classId={teacherClassroom.id} className="submit-rsvp-button" onClick={this.submitRSVP.bind(this,teacherClassroom.id)}>RSVP</button>
-          </div>)
-        }, this)}
+          <ReactCSSTransitionGroup transitionName="example" transitionEnterTimeout={500} transitionLeaveTimeout={500}>
+            {studentObject.map(function(studentClassroom, i) {
+              var time = moment(studentClassroom.starttime).format('dddd [at] h:mm a').toString();
+              return (
+                <div className="student open-event" key={"student-" + i}>
+                  <p>{studentClassroom.dish}</p>
+                  <p>{studentClassroom.cuisine}</p>
+                  <p>{time}</p>
+                  <button classId={studentClassroom.id} className="submit-rsvp-button" onClick={this.submitRSVP.bind(this,studentClassroom.id)}>RSVP</button>
+                </div>
+              )
+            }, this)}
+          </ReactCSSTransitionGroup>
+          <ReactCSSTransitionGroup transitionName="example" transitionEnterTimeout={500} transitionLeaveTimeout={500}>
+            {teacherObject.map(function(teacherClassroom, i) {
+              var time = moment(teacherClassroom.starttime).format('dddd [at] h:mm a').toString();
+              return (<div id="teacher" className="teacher open-event" key={"teacher-" + i}>
+                <p>{teacherClassroom.dish}</p>
+                <p>{teacherClassroom.cuisine}</p>
+                <p>{time}</p>
+                <button classId={teacherClassroom.id} className="submit-rsvp-button" onClick={this.submitRSVP.bind(this,teacherClassroom.id)}>RSVP</button>
+              </div>)
+            }, this)}
+          </ReactCSSTransitionGroup>
         </div>
       </div>
     );

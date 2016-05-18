@@ -53,3 +53,12 @@ div.main-cal-container {
         }
     }
 }
+
+.example-leave {
+  opacity: 1;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+  transition: opacity 500ms ease-in;
+}

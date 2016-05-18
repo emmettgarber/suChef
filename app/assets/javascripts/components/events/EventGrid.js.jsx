@@ -38,7 +38,9 @@ var EventGrid = React.createClass({
             <p>Hangout link</p>
           </div>
         </div>
-        {this.getClasses(this.props.profile.kitchen_hashes)}
+        <ReactCSSTransitionGroup transitionName="example" transitionEnterTimeout={500} transitionLeaveTimeout={500}>
+          {this.getClasses(this.props.profile.kitchen_hashes)}
+        </ReactCSSTransitionGroup>
       </div>);
   }
 })
