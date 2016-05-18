@@ -2,11 +2,10 @@ var EventGrid = React.createClass({
   getClasses: function(array) {
     return array.map(function(viewing, i) {
       var time = moment(viewing.starttime).format("dddd MMMM Do, [at] h:mm a").toString();
-      var emails = "";
-      if (this.props.profile.id  == viewing.instructor_id ) {
-        emails = "[{ id : '"+(viewing.apprentice_email)+"', invite_type : 'EMAIL' }]"
-      } else { emails = "[{ id : '"+(viewing.instructor_email)+"', invite_type : 'EMAIL' }]"
-      }
+      var holder = viewing
+      // var now = moment();
+      // var when = moment(viewing.starttime);
+      // console.log(moment(now, "DD/MM/YYYY HH:mm:ss").diff(moment(when,"DD/MM/YYYY HH:mm:ss"));
       return (
         <div key={i} className="fillers">
         <div className="body">
@@ -19,7 +18,9 @@ var EventGrid = React.createClass({
             <p>{time}</p>
           </div>
           <div className="body">
-            <div className="g-hangout" data-render="createhangout" data-invites={emails}></div>
+            <HangoutButton 
+              profile= {this.props.profile} room= {holder}
+            />
           </div>
         </div>
         )
