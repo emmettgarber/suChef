@@ -12,7 +12,7 @@ var MyEventsContainer = React.createClass({
         <div className="main-event-container" style={this.state.style} >
           <EventGrid
             profile={this.props.profile}
-            updateProfile={this.props.updateProfile}
+            updateProfile={this.props.profileUpdate}
           />
         </div>
       </div>
