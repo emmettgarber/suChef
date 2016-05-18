@@ -1,14 +1,4 @@
 var EventGrid = React.createClass({
-  getImage: function(kitchen) {
-    console.log(kitchen)
-    if (kitchen.apprentice_id != null && kitchen.instructor_id == null) {
-      return(<Sad/>)
-    } else if (kitchen.apprentice_id == null && kitchen.instructor_id != null) {
-      return(<Sad/>)
-    } else {
-      return(<Happy/>)
-    }
-  },
   getClasses: function(array) {
     return array.map(function(viewing, i) {
       var time = moment(viewing.starttime).format("dddd MMMM Do, [at] h:mm a").toString();
@@ -16,7 +6,7 @@ var EventGrid = React.createClass({
       return (
         <div key={i} className="fillers">
         <div className="body">
-          <p>{viewing.user_type} - {this.getImage(viewing)}</p>
+          <p>{viewing.user_type}</p>
         </div>
           <div className="body">
             <p>{viewing.dish}</p>
