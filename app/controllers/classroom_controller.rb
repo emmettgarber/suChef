@@ -41,16 +41,10 @@ class ClassroomController < ApplicationController
 			else
 				p "Already registered, go away"
 			end
-			render json: { message: "Sup dawg, I'm done adding you to the class" }.as_json
-	end
-
-	def show_open
-		if request.xhr?
-			open_classroom_for_instructors = Classroom.where(instructor_id: nil).where.not(apprentice_id: current_user.id)
-			open_classroom_for_students = Classroom.where(apprentice_id: nil).where.not(instructor_id: current_user.id)
 			render json: {students: open_classroom_for_students, teachers: open_classroom_for_instructors}.as_json
 		end
 	end
+
 
 	private
 	def classroom_params
