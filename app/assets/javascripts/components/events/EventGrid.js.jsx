@@ -5,7 +5,7 @@ var EventGrid = React.createClass({
       return (
         <div key={i} className="fillers">
         <div className="body">
-          <p>{viewing.user_type}</p>
+          <p>{viewing.user_type}<Image source={require('./happyp.png')} /></p>
         </div>
           <div className="body">
             <p>{viewing.dish}</p>
