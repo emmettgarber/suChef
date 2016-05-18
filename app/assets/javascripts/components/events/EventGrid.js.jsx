@@ -1,4 +1,13 @@
 var EventGrid = React.createClass({
+
+  renderApprBox: function(viewing, emails) {
+    if (moment().isBefore(viewing.starttime)) {
+      return <div className="g-hangout" data-render="createhangout" data-invites={emails}></div>
+    } else {
+      return <ReviewForm profile={this.props.profile} viewing={viewing} updateProfile={this.props.updateProfile}/>
+    }
+  },
+
   getIcon: function(viewing) {
     if (viewing.instructor_id == null && viewing.apprentice_id != null) {
       return <Sad/>
@@ -25,14 +34,19 @@ var EventGrid = React.createClass({
             <p>{time}</p>
           </div>
           <div className="body">
+<<<<<<< HEAD
+            {this.renderApprBox(viewing, emails)}
+=======
             <HangoutButton
               profile= {this.props.profile} room= {holder}
             />
+>>>>>>> master
           </div>
         </div>
         )
       }, this)
   },
+
   render: function() {
 
     return (

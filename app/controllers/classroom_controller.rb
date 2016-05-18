@@ -16,8 +16,6 @@ class ClassroomController < ApplicationController
 
 	def update
 		updateroom = Classroom.find(params[:classroom_id])
-		p session[:user_id]
-		p "THIS IS THE FUCKING THING YOU WANT"
 		if updateroom.apprentice_id == nil
 			updateroom.apprentice_id = session[:user_id]
 			updateroom.update(apprentice_email: User.find(current_user.id).email)
@@ -42,6 +40,17 @@ class ClassroomController < ApplicationController
 				p "Already registered, go away"
 			end
 			render json: { message: "Sup dawg, I'm done adding you to the class" }.as_json
+	end
+
+	def rating
+		classId = params[:classId].to_i
+		classroom = Classroom.find(classId)
+		if params[:ratePerson] == "Teacher"
+			classroom.update(instructor_goodness: params[:rating])
+		else
+			classroom.update(apprentice_goodness: params[:rating])
+		end
+		render json: { message: "Yippee" }
 	end
 
 	def show_open

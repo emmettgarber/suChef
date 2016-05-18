@@ -14,9 +14,12 @@ class User < ActiveRecord::Base
   # end
 
   def kitchen_hashes
-    (teachings + viewings).sort_by(&:starttime).map do |kitchen|
+    teachings_to_rate = teachings.where(apprentice_goodness: nil)
+    viewings_to_rate = viewings.where(instructor_goodness: nil)
+    complete_viewings = (teachings_to_rate + viewings_to_rate).sort_by(&:starttime).map do |kitchen|
       kitchen.as_json.merge(user_type: kitchen.instructor_id == self.id ? "Teacher" : "Student")
     end
+    return complete_viewings
 	end
 
   def totalAverage
@@ -24,7 +27,7 @@ class User < ActiveRecord::Base
     count1 = self.viewings.where.not("apprentice_goodness" => nil).count
     scores = self.teachings.where.not("instructor_goodness" => nil).pluck(:instructor_goodness)
     scores1 = self.viewings.where.not("instructor_goodness" => nil).pluck(:apprentice_goodness)
-    if scores.count > 0 || scores1.count > 0
+    if scores.count > 0 && scores1.count > 0
       finalscore = (scores.reduce(:+) + scores1.reduce(:+))/(count + count1)
     else
       finalscore = 0
