@@ -1,3 +1,22 @@
+div.cal-container {
+
+    p.sub-title {
+      margin-top: 0px;
+      margin-bottom: 2px;
+      text-align: center;
+      font-family: $HeaderFont;
+      font-style: bold;
+      letter-spacing: 1px;
+
+        svg {
+          margin-left: 10px;
+          position: relative;
+          top: 6px;
+          height: 30px;
+        }
+    }
+}
+
 h1.events-title {
   text-align: center;
   letter-spacing: 3px;

@@ -7,8 +7,9 @@ var MyEventsContainer = React.createClass({
   },
   render: function() {
     return (
-      <div>
+      <div className="cal-container">
         <h1 className="events-title">Here are your upcoming events</h1>
+        <p className="sub-title"><Happy/> : someone has RSVP'd <Sad/> : no one has RSVP'd</p>
         <div className="main-event-container" style={this.state.style} >
           <EventGrid
             profile={this.props.profile}
