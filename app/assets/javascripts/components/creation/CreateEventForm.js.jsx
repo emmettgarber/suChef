@@ -59,13 +59,30 @@ var CreateEventForm = React.createClass({
   },
 
   renderTimeSlots: function(time) {
-    var hour = moment().startOf('hour').add(1, 'h').add(time, 'm');
+    var hour;
+    var year = moment().format("YYYY");
+    var datePicked = moment(year+"-"+this.state.month+"-"+this.state.day)
+    if (moment(datePicked).isAfter(moment())) {
+      hour = moment().hour(0).startOf('hour').add(time, 'm');
+    } else {
+      hour = moment().startOf('hour').add(1, 'h').add(time, 'm');
+    };
     return <option value={hour.format("HH:mm:ss")}>{hour.format("hh:mm a")}</option>
   },
 
   checkTimeValidity: function() {
     var year = moment().format("YYYY");
-    return moment(year+"-"+this.state.month+"-"+this.state.day).isBefore(moment());
+    return moment(year+"-"+this.state.month+"-"+this.state.day+" "+this.state.starttime).isBefore(moment());
+  },
+
+  isDayAfter: function() {
+    var year = moment().format("YYYY");
+    var datePicked = moment(year+"-"+this.state.month+"-"+this.state.day)
+    if (moment(datePicked).isAfter(moment())) {
+      return 1440;
+    } else {
+      return moment().endOf('day').diff(moment().endOf('hour'), 'minutes')
+    }
   },
 
   renderMonths: function(month) {
@@ -81,7 +98,9 @@ var CreateEventForm = React.createClass({
     var timeSlots = [];
     var months = [];
     var days = [];
-    for (var i = 0; i < moment().endOf('day').diff(moment().endOf('hour'), 'minutes'); i += 30) {
+    var disabled = this.checkTimeValidity();
+
+    for (var i = 0; i < this.isDayAfter(); i += 30) {
       timeSlots.push(this.renderTimeSlots(i));
     };
     for (var i = 0; i < 12; i ++) {
@@ -132,7 +151,7 @@ var CreateEventForm = React.createClass({
           </select>
           <label for="dish">Dish:</label>
           <input type="text" name="dish" ref="dish" value={this.state.dish} onChange={this.handleChange} />
-          <input type="submit" value="Create This Kitchen!" />
+          <input type="submit" disabled={disabled} value="Create This Kitchen!" />
         </form>
       </div>
     )
