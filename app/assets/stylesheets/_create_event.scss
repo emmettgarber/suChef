@@ -1,5 +1,5 @@
 div.whole-form {
-  max-width: 800px;
+  max-width: 900px;
   margin: auto;
 
     svg {
@@ -21,13 +21,19 @@ form.create-form {
   border-radius: 5px;
   padding: 10px;
   background-color: rgb(250, 168, 46);
+  font-size: 24px;
 
     label {
       margin-right: 10px;
     }
 
+    label.dishes {
+      margin-left: 30px;
+    }
+
     select {
       margin-right: 30px;
+      font-size: 16px;
     }
 
     input[type=submit] {
@@ -38,6 +44,6 @@ form.create-form {
       margin-top: 10px;
       border-radius: 10px;
       letter-spacing: 2px;
-      font-size: 16px;
+      font-size: 18px;
     }
 }
