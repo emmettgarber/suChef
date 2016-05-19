@@ -63,6 +63,11 @@ var CreateEventForm = React.createClass({
     return <option value={hour.format("HH:mm:ss")}>{hour.format("hh:mm a")}</option>
   },
 
+  checkTimeValidity: function() {
+    var year = moment().format("YYYY");
+    return moment(year+"-"+this.state.month+"-"+this.state.day).isBefore(moment());
+  },
+
   renderMonths: function(month) {
     var month = moment().month(month).startOf('month')
     return <option value={month.format("MM")}>{month.format("MMMM")}</option>
