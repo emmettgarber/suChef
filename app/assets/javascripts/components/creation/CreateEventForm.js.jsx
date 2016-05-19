@@ -59,7 +59,7 @@ var CreateEventForm = React.createClass({
   },
 
   renderTimeSlots: function(time) {
-    var hour = moment().hour(0).startOf('hour').add(time, 'm');
+    var hour = moment().startOf('hour').add(1, 'h').add(time, 'm');
     return <option value={hour.format("HH:mm:ss")}>{hour.format("hh:mm a")}</option>
   },
 
@@ -76,7 +76,7 @@ var CreateEventForm = React.createClass({
     var timeSlots = [];
     var months = [];
     var days = [];
-    for (var i = 0; i < 1440; i += 30) {
+    for (var i = 0; i < moment().endOf('day').diff(moment().endOf('hour'), 'minutes'); i += 30) {
       timeSlots.push(this.renderTimeSlots(i));
     };
     for (var i = 0; i < 12; i ++) {
