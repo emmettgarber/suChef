@@ -9,7 +9,7 @@ var HangoutButton = React.createClass({
 	  var eventTime = viewing.starttime;
 	  var time = moment(eventTime).diff(moment(), 'minutes')
 	  if (time <= 30) {
-			return (<div><script src="https://apis.google.com/js/platform.js" async defer></script><div className="g-hangout" data-render="createhangout" data-invites={emails}></div></div>)
+			return (<div><script src="https://apis.google.com/js/platform.js" async></script><div className="g-hangout" data-render="createhangout" data-invites={emails}></div></div>)
 		} else {
 			return ( <div> Check back later</div>)
 		}
