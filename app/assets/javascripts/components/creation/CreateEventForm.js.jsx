@@ -104,6 +104,7 @@ var CreateEventForm = React.createClass({
           <select ref="day" name="day" value={this.state.day} onChange={this.handleChange}>
             {days}
           </select>
+          <br/>
           <label for="language">Preferred Language:</label>
           <select name="language" ref="language" onChange={this.handleChange}>
               <option value="English">English</option>
@@ -112,7 +113,7 @@ var CreateEventForm = React.createClass({
               <option value="Mandarin">Mandarin</option>
               <option value="Spanish">Spanish</option>
               <option value="Tagalog">Tagalog</option>
-          </select><br/>
+          </select>
           <label for="cuisine">Cuisine: </label>
           <input type="text" name="cuisine" ref="cuisine" value={this.state.cuisine} onChange={this.handleChange} /><br />
           <label for="role">Who Are You? </label>
@@ -127,7 +128,11 @@ var CreateEventForm = React.createClass({
           </select>
           <label for="dish">Dish:</label>
           <input type="text" name="dish" ref="dish" value={this.state.dish} onChange={this.handleChange} />
-          <input type="submit" value="Create This Kitchen!" />
+          <div className="space-holder"></div>
+          <div className="submit-button">
+            <input type="submit" value="Create This Kitchen!" />
+          </div>
+          <div className="space-holder"></div>
         </form>
       </div>
     )
