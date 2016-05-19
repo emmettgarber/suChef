@@ -1,5 +1,5 @@
 div.whole-form {
-  max-width: 1200px;
+  max-width: 800px;
   margin: auto;
 
     svg {
@@ -31,6 +31,13 @@ form.create-form {
     }
 
     input[type=submit] {
-      margin-left: 30px;
+      background: $OrangeAccent;
+      font-family: $HeaderFont;
+      font-weight: bold;
+      border: 2px $LightBlue solid;
+      margin-top: 10px;
+      border-radius: 10px;
+      letter-spacing: 2px;
+      font-size: 16px;
     }
 }

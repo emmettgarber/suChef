@@ -1,6 +1,5 @@
 var CalendarDisplay = React.createClass({
   submitRSVP: function(classroomId){
-    console.log(classroomId);
       var submission = {
           classId: classroomId,
         }
@@ -43,7 +42,6 @@ var CalendarDisplay = React.createClass({
   },
 
   render: function() {
-    console.log(this.props.openClasses)
     return(
       <div className="class-card">
         {this.getClassrooms(this.props.openClasses)}
