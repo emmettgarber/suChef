@@ -1,7 +1,7 @@
 var HangoutButton = React.createClass({
 	getInitialState: function() {
 		return {
-			emails: ""
+			hangout: ""
 		}
 	},
 	getButton: function(viewing){
@@ -21,7 +21,7 @@ var HangoutButton = React.createClass({
 	},
 	componentDidMount: function() {
 		this.setState({
-			emails: "hello"
+			hangout: "I love Rocky"
 		})
 	},
 
