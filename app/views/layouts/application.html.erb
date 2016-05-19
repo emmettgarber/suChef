@@ -8,10 +8,10 @@
   <link href='https://fonts.googleapis.com/css?family=Amatic+SC:400,700' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
   <%= favicon_link_tag 'favicon.ico' %>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
 <body>
-
-<!-- <div class="g-hangout" data-render="createhangout"></div> -->
+<script src="https://apis.google.com/js/platform.js" async defer></script>
 <script>
 jQuery(function() {
   return $.ajax({
@@ -56,6 +56,5 @@ data: response,
 <div id="app-container">
   <%= yield %>
 </div>
-<script src="https://apis.google.com/js/platform.js" async defer></script>
 </body>
 </html>
