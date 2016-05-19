@@ -163,7 +163,7 @@ var CreateEventForm = React.createClass({
               <option value="instructional">Instructional</option>
               <option value="Casual">Casual</option>
           </select>
-          <input type="submit" disabled={disabled} value="Create This Kitchen!" />
+          <input type="submit" disabled={disabled} value="Let's Get Cookin'!" />
         </form>
       </div>
     )
