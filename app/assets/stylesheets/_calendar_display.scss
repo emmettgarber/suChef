@@ -1,4 +1,7 @@
 div.main-cal-container {
+  box-sizing: border-box;
+  max-width: 1020px;
+  margin: auto;
 
     h1 {
       text-align: center;
@@ -28,11 +31,9 @@ div.main-cal-container {
 
 
 
-    div.events-sub-container,
-    div.main-cal-container {
-      box-sizing: border-box;
-      max-width: 1020px;
-      margin: auto;
+    div.events-sub-container {
+      display: flex;
+      justify-content: center;
 
         div {
           min-width: 170px;
