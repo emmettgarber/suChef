@@ -128,7 +128,11 @@ var CreateEventForm = React.createClass({
           </select>
           <label for="dish">Dish:</label>
           <input type="text" name="dish" ref="dish" value={this.state.dish} onChange={this.handleChange} />
-          <input type="submit" value="Create This Kitchen!" />
+          <div className="space-holder"></div>
+          <div className="submit-button">
+            <input type="submit" value="Create This Kitchen!" />
+          </div>
+          <div className="space-holder"></div>
         </form>
       </div>
     )
