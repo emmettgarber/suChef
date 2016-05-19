@@ -20,7 +20,7 @@ var CreateEventForm = React.createClass({
   },
 
   handleChange: function(event) {
-    var field = event.target.name
+    var field = event.target.name;
     var nextState = {};
     nextState[field] = event.target.value;
     this.setState(nextState);
@@ -67,7 +67,13 @@ var CreateEventForm = React.createClass({
     } else {
       hour = moment().startOf('hour').add(1, 'h').add(time, 'm');
     };
-    return <option value={hour.format("HH:mm:ss")}>{hour.format("hh:mm a")}</option>
+    return <option key={time} value={hour.format("HH:mm:ss")}>{hour.format("hh:mm a")}</option>
+  },
+
+  renderEndTimeSlots: function(time) {
+    console.log(this.state.starttime);
+    var hour = moment(this.state.starttime, "HH:mm:ss").add(30, 'm').add(time, 'm');
+    return <option key={time} value={hour.format("HH:mm:ss")}>{hour.format("hh:mm a")}</option>
   },
 
   checkTimeValidity: function() {
@@ -87,21 +93,25 @@ var CreateEventForm = React.createClass({
 
   renderMonths: function(month) {
     var month = moment().month(month).startOf('month')
-    return <option value={month.format("MM")}>{month.format("MMMM")}</option>
+    return <option key={month} value={month.format("MM")}>{month.format("MMMM")}</option>
   },
 
   renderDays: function(day) {
-    return <option value={day + 1}>{day + 1}</option>
+    return <option key={day} value={day + 1}>{day + 1}</option>
   },
 
   render: function() {
     var timeSlots = [];
+    var endTimeSlots = [];
     var months = [];
     var days = [];
     var disabled = this.checkTimeValidity();
 
     for (var i = 0; i < this.isDayAfter(); i += 30) {
       timeSlots.push(this.renderTimeSlots(i));
+    };
+    for (var i = 0; i < 120; i += 30) {
+      endTimeSlots.push(this.renderEndTimeSlots(i));
     };
     for (var i = 0; i < 12; i ++) {
       months.push(this.renderMonths(i));
@@ -120,7 +130,7 @@ var CreateEventForm = React.createClass({
           </select>
           <label for="endtime">Select End Time:</label>
           <select name="endtime" ref="endtime" value={this.state.endtime} onChange={this.handleChange}>
-            {timeSlots}
+            {endTimeSlots}
           </select>
           <select ref="month" name="month" value={this.state.month} onChange={this.handleMonthChange}>
             {months}

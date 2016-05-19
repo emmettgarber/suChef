@@ -27,7 +27,7 @@ var CalendarDisplay = React.createClass({
             {classrooms.map(function(kitchen, i) {
               var time = moment(kitchen.starttime).format('dddd [at] h:mm a').toString();
               return (
-                <div className={"open-event " + kitchen.user_type} key={"student-" + i}>
+                <div className={"open-event " + kitchen.user_type} key={kitchen.id}>
                   <p>{kitchen.cuisine}</p>
                   <p>{kitchen.dish}</p>
                   <p>{time}</p>
