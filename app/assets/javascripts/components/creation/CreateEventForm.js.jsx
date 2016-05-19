@@ -67,7 +67,7 @@ var CreateEventForm = React.createClass({
     } else {
       hour = moment().startOf('hour').add(1, 'h').add(time, 'm');
     };
-    return <option disabled="true" value={hour.format("HH:mm:ss")}>{hour.format("hh:mm a")}</option>
+    return <option value={hour.format("HH:mm:ss")}>{hour.format("hh:mm a")}</option>
   },
 
   checkTimeValidity: function() {
