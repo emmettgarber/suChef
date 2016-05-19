@@ -1,4 +1,9 @@
 var HangoutButton = React.createClass({
+	getInitialState: function() {
+		return {
+			emails: ""
+		}
+	},
 	getButton: function(viewing){
 		var emails = "";
 		if (this.props.profile.id  == viewing.instructor_id ) {
@@ -14,6 +19,11 @@ var HangoutButton = React.createClass({
 			return ( <div> Check back later</div>)
 		}
 	},
+	componentDidMount: function() {
+		this.setState({
+			emails: "hello"
+		})
+	},
 
 	render: function() {
 		return (
@@ -21,4 +31,3 @@ var HangoutButton = React.createClass({
 		)
 	}
 })
-
